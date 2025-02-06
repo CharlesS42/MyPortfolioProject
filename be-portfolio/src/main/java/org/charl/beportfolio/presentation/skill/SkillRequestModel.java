@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SkillRequestModel {
-    private String skillId;
-    private String skillName;
+    private String name;
     private String proficiencyLevel;
+    private String category;
 }
 

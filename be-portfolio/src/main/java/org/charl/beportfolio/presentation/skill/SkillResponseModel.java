@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SkillResponseModel {
     private String skillId;
-    private String skillName;
+    private String name;
     private String proficiencyLevel;
+    private String category;
 }
 

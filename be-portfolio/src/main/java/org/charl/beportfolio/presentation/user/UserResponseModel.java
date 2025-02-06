@@ -14,4 +14,5 @@ public class UserResponseModel {
     private String fullName;
     private String email;
     private String company;
+    private String role;
 }

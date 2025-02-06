@@ -1,5 +1,10 @@
 package org.charl.beportfolio.utils.entitymodelutils;
 
+import org.charl.beportfolio.dataaccess.skill.Skill;
+import org.charl.beportfolio.presentation.skill.SkillRequestModel;
+import org.charl.beportfolio.presentation.skill.SkillResponseModel;
+import org.springframework.beans.BeanUtils;
+
 public class SkillEntityModelUtil {
 
     // Method to convert a Skill entity to a SkillResponseModel

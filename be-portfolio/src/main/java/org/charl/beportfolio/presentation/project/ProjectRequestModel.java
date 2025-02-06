@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -14,6 +15,8 @@ import java.util.List;
 public class ProjectRequestModel {
     private String title;
     private String description;
-    private String date;
     private List<String> programmingLanguages;
+    private LocalDate date;
+    private String repositoryUrl;
+    private String liveDemoUrl;
 }
