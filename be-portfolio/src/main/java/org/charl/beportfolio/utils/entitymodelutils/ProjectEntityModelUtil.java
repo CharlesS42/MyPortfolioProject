@@ -1,5 +1,10 @@
 package org.charl.beportfolio.utils.entitymodelutils;
 
+import org.charl.beportfolio.dataaccess.project.Project;
+import org.charl.beportfolio.presentation.project.ProjectRequestModel;
+import org.charl.beportfolio.presentation.project.ProjectResponseModel;
+import org.springframework.beans.BeanUtils;
+
 public class ProjectEntityModelUtil {
 
     // Method to convert a Project entity to a ProjectResponseModel

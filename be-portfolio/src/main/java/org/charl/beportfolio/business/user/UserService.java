@@ -1,20 +1,22 @@
 package org.charl.beportfolio.business.user;
 
 import org.charl.beportfolio.dataaccess.user.User;
+import org.charl.beportfolio.presentation.user.UserRequestModel;
+import org.charl.beportfolio.presentation.user.UserResponseModel;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserService {
-    Flux<User> getAllUsers();
+    Flux<UserResponseModel> getAllUsers();
 
-    Mono<User> getUserById(String id);
+    Mono<UserResponseModel> getUserById(String id);
 
-    Mono<User> addUser(User user);
+    Mono<UserResponseModel> addUser(UserRequestModel userRequestModel);
 
-    Mono<User> updateUser(String id, User user);
+    Mono<UserResponseModel> updateUser(String id, UserRequestModel userRequestModel);
 
     Mono<Void> deleteUser(String id);
 
-    Mono<User> getUserByEmail(String email);
+    Mono<UserResponseModel> getUserByEmail(String email);
 }
 

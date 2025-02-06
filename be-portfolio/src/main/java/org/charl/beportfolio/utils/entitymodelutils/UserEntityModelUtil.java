@@ -1,5 +1,10 @@
 package org.charl.beportfolio.utils.entitymodelutils;
 
+import org.charl.beportfolio.dataaccess.user.User;
+import org.charl.beportfolio.presentation.user.UserRequestModel;
+import org.charl.beportfolio.presentation.user.UserResponseModel;
+import org.springframework.beans.BeanUtils;
+
 public class UserEntityModelUtil {
 
     // Method to convert a User entity to a UserResponseModel
