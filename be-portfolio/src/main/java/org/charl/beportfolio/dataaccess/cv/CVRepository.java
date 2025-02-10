@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface CVRepository extends ReactiveMongoRepository<CV, String> {
-    Mono<CV> getCV();
+    // No custom methods needed
 }

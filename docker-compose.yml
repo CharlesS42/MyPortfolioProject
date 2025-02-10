@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+  fe-portfolio:
+    image: fe-portfolio
+    container_name: fe-portfolio
+    build:
+      context: ./fe-portfolio
+      dockerfile: Dockerfile
+      args:
+        - BUILD_MODE=development
+    ports:
+      - "3000:3000"
+    env_file:
+      - fe-portfolio/.env
+    volumes:
+      - ./fe-portfolio/src:/app/src
+
+  be-portfolio:
+    image: openjdk:17
+    hostname: be-portfolio
+    build:
+      context: ./be-portfolio
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    env_file:
+      - be-portfolio/.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: portfolio-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8082:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+    depends_on:
+      - mongo

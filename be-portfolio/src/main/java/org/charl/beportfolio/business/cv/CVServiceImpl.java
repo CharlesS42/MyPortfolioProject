@@ -19,7 +19,8 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public Mono<CVResponseModel> getCV() {
-        return cvRepository.getCV()
+        return cvRepository.findAll()
+                .next()
                 .map(cvEntity -> {
                     CVResponseModel cvResponseModel = new CVResponseModel();
                     cvResponseModel.setFileName(cvEntity.getFileName());
@@ -31,7 +32,8 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public Mono<CVResponseModel> updateCV(CVRequestModel cvRequestModel) {
-        return cvRepository.getCV()
+        return cvRepository.findAll()
+                .next()
                 .map(cvEntity -> {
                     cvEntity.setFileName(cvRequestModel.getFileName());
                     cvEntity.setFileUrl(cvRequestModel.getFileUrl());
