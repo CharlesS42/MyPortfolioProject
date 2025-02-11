@@ -4,3 +4,9 @@ export interface CVResponseModel {
     fileUrl: string;
     uploadedAt: string;
 }
+
+export interface CVRequestModel {
+    fileName: string;
+    fileUrl: string;
+    uploadedAt: string;
+}

@@ -43,7 +43,7 @@ spring:
 
   data:
     mongodb:
-      host: mongodb
+      host: mongo
       port: 27017
       database: portfolio
       username: root
