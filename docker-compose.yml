@@ -1,20 +1,20 @@
 version: '3.9'
 
 services:
-  fe-portfolio:
-    image: fe-portfolio
-    container_name: fe-portfolio
-    build:
-      context: ./fe-portfolio
-      dockerfile: Dockerfile
-      args:
-        - BUILD_MODE=development
-    ports:
-      - "3000:3000"
-    env_file:
-      - fe-portfolio/.env
-    volumes:
-      - ./fe-portfolio/src:/app/src
+#  fe-portfolio:
+#    image: fe-portfolio
+#    container_name: fe-portfolio
+#    build:
+#      context: ./fe-portfolio
+#      dockerfile: Dockerfile
+#      args:
+#        - BUILD_MODE=development
+#    ports:
+#      - "3000:3000"
+#    env_file:
+#      - fe-portfolio/.env
+#    volumes:
+#      - ./fe-portfolio/src:/app/src
 
   be-portfolio:
     image: openjdk:17
