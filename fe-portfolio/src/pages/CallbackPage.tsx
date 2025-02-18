@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+//import React, { useEffect, useState, useRef } from "react";
+//import { useNavigate } from "react-router-dom";
+//import { useAuth0 } from "@auth0/auth0-react";
 //import { useUsersApi } from "../features/users/api/users.api";
-import { AppRoutes } from "../shared/models/app.routes";
+//import { AppRoutes } from "../shared/models/app.routes";
 
 const CallbackPage: React.FC = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+    /*
+    const { user, isAuthenticated, isLoading } = useAuth0();
   //const { loginUser, syncUser } = useUsersApi();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +31,8 @@ const CallbackPage: React.FC = () => {
     if (!isLoading && !isProcessingRef.current) {
       saveAndSyncUser();
     }
-  }, [isAuthenticated, isLoading, user, /*loginUser, syncUser,*/ navigate]);
+      
+  }, [isAuthenticated, isLoading, user, /*loginUser, syncUser,*//* navigate]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -39,7 +41,7 @@ const CallbackPage: React.FC = () => {
   if (error) {
     return <div className="alert alert-danger">{error}</div>;
   }
-
+    */
   return <div />;
 };
 

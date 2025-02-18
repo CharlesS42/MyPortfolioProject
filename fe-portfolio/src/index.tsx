@@ -1,12 +1,12 @@
-import { Auth0Provider } from "@auth0/auth0-react";
+//import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { auth0Config } from "./auth/auth0-config";
-import { AppRoutes } from "./shared/models/app.routes";
+//import { auth0Config } from "./auth/auth0-config";
+//import { AppRoutes } from "./shared/models/app.routes";
 //import { UserProvider } from "./context/UserContext";
 //import { ToastContainer } from 'react-toastify'; // Import ToastContainer
 
@@ -21,9 +21,11 @@ window.addEventListener('error', (e) => {
   }
 }, true);
 
+/*
 const onRedirectCallback = () => {
   window.location.replace(AppRoutes.Callback);
 };
+*/
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -36,6 +38,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    {/* 
     <Auth0Provider
       domain={auth0Config.domain}
       clientId={auth0Config.clientId}
@@ -45,12 +48,12 @@ root.render(
       }}
       onRedirectCallback={onRedirectCallback}
       cacheLocation="localstorage"
-    >
+    > */}
       {/* <UserProvider> */}
         <App />
         {/* <ToastContainer /> */}
-      {/* </UserProvider> */}
-    </Auth0Provider>
+      {/* </UserProvider> 
+    </Auth0Provider>*/}
   </React.StrictMode>
 );
 
