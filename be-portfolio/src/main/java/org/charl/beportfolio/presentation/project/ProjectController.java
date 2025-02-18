@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1/projects")
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class ProjectController {
 
     private final ProjectService projectService;

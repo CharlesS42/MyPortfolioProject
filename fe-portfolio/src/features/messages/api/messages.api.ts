@@ -6,11 +6,12 @@ import {
 
 export const useMessagesApi = () => {
     const axiosInstance = useAxiosInstance();
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllMessages = async (): Promise<MessageResponseModel[]> => {
       const messages: MessageResponseModel[] = [];
   
-      const response = await axiosInstance.get("/messages", {
+      const response = await axiosInstance.get(`${backendUrl}/messages`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -37,7 +38,7 @@ export const useMessagesApi = () => {
         messageId: string
     ): Promise<MessageResponseModel> => {
       const response = await axiosInstance.get<MessageResponseModel>(
-          `/messages/${messageId}`
+          `${backendUrl}/messages/${messageId}`
       );
       return response.data;
     };
@@ -46,7 +47,7 @@ export const useMessagesApi = () => {
         message: MessageRequestModel
     ): Promise<MessageResponseModel> => {
       const response = await axiosInstance.post<MessageResponseModel>(
-          "/messages",
+          `${backendUrl}/messages`,
           message
       );
       return response.data;
@@ -54,7 +55,7 @@ export const useMessagesApi = () => {
   
     const deleteMessage = async (messageId: string): Promise<void> => {
       await axiosInstance.delete<MessageResponseModel>(
-          `/messages/${messageId}`
+          `${backendUrl}/messages/${messageId}`
       );
     };
   

@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1/users")
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
 
     private final UserService userService;

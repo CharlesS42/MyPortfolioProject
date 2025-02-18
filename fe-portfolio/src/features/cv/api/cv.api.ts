@@ -6,10 +6,11 @@ import {
 
 export const useCVsApi = () => {
     const axiosInstance = useAxiosInstance();
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getCV = async (): Promise<CVResponseModel> => {
       const response = await axiosInstance.get<CVResponseModel>(
-          `/cv`
+          `${backendUrl}/cv`
       );
       return response.data;
     };
@@ -18,7 +19,7 @@ export const useCVsApi = () => {
         cv: CVRequestModel
     ): Promise<CVResponseModel> => {
       const response = await axiosInstance.put<CVResponseModel>(
-          `/cv`,
+          `${backendUrl}/cv`,
           cv
       );
       return response.data;

@@ -14,6 +14,9 @@ public class ContactMessageEntityModelUtil {
         ContactMessageResponseModel contactMessageResponseModel = new ContactMessageResponseModel();
         BeanUtils.copyProperties(message, contactMessageResponseModel);
 
+        if (message.getContactMessageId() != null) {
+            contactMessageResponseModel.setContactMessageId(message.getContactMessageId());
+        }
         if (message.getName() != null) {
             contactMessageResponseModel.setName(message.getName());
         }
@@ -33,7 +36,7 @@ public class ContactMessageEntityModelUtil {
     // Method to map a ContactMessageRequestModel to a ContactMessage entity
     public static ContactMessage toContactMessageEntity(ContactMessageRequestModel messageRequestModel) {
         return ContactMessage.builder()
-                .id(generateUUIDString()) // Generate a unique messageId
+                .contactMessageId(generateUUIDString()) // Generate a unique messageId
                 .name(messageRequestModel.getName())
                 .email(messageRequestModel.getEmail())
                 .message(messageRequestModel.getMessage())

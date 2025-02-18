@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1/cv")
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class CVController {
 
     private final CVService cvService;

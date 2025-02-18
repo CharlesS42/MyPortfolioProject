@@ -6,11 +6,12 @@ import {
 
 export const useSkillsApi = () => {
     const axiosInstance = useAxiosInstance();
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllSkills = async (): Promise<SkillResponseModel[]> => {
       const skills: SkillResponseModel[] = [];
   
-      const response = await axiosInstance.get("/skills", {
+      const response = await axiosInstance.get(`${backendUrl}/skills`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -37,7 +38,7 @@ export const useSkillsApi = () => {
         skillId: string
     ): Promise<SkillResponseModel> => {
       const response = await axiosInstance.get<SkillResponseModel>(
-          `/skills/${skillId}`
+          `${backendUrl}/skills/${skillId}`
       );
       return response.data;
     };
@@ -46,7 +47,7 @@ export const useSkillsApi = () => {
         skill: SkillRequestModel
     ): Promise<SkillResponseModel> => {
       const response = await axiosInstance.post<SkillResponseModel>(
-          "/skills",
+          `${backendUrl}/skills`,
           skill
       );
       return response.data;
@@ -57,7 +58,7 @@ export const useSkillsApi = () => {
         skillId: string
     ): Promise<SkillResponseModel> => {
       const response = await axiosInstance.put<SkillResponseModel>(
-          `/skills/${skillId}`,
+          `${backendUrl}/skills/${skillId}`,
           skill
       );
       return response.data;
@@ -65,7 +66,7 @@ export const useSkillsApi = () => {
   
     const deleteSkill = async (skillId: string): Promise<void> => {
       await axiosInstance.delete<SkillResponseModel>(
-          `/skills/${skillId}`
+          `${backendUrl}/skills/${skillId}`
       );
     };
   

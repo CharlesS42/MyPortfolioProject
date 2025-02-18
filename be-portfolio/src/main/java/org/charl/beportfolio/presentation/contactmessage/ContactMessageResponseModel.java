@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContactMessageResponseModel {
-    private String messageId;
+    private String contactMessageId;
     private String name;
     private String email;
     private String message;

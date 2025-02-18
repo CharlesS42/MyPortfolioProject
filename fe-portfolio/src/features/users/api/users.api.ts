@@ -6,11 +6,12 @@ import {
 
 export const useUsersApi = () => {
     const axiosInstance = useAxiosInstance();
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllUsers = async (): Promise<UserResponseModel[]> => {
       const users: UserResponseModel[] = [];
   
-      const response = await axiosInstance.get("/users", {
+      const response = await axiosInstance.get(`${backendUrl}/users`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -30,6 +31,7 @@ export const useUsersApi = () => {
         }
       }
   
+      console.log("API response users:", users);
       return users;
     };
   
@@ -37,7 +39,7 @@ export const useUsersApi = () => {
         userId: string
     ): Promise<UserResponseModel> => {
       const response = await axiosInstance.get<UserResponseModel>(
-          `/users/${userId}`
+          `${backendUrl}/users/${userId}`
       );
       return response.data;
     };
@@ -46,7 +48,7 @@ export const useUsersApi = () => {
         user: UserRequestModel
     ): Promise<UserResponseModel> => {
       const response = await axiosInstance.post<UserResponseModel>(
-          "/users",
+          `${backendUrl}/users`,
           user
       );
       return response.data;
@@ -57,7 +59,7 @@ export const useUsersApi = () => {
         userId: string
     ): Promise<UserResponseModel> => {
       const response = await axiosInstance.put<UserResponseModel>(
-          `/users/${userId}`,
+          `${backendUrl}/users/${userId}`,
           user
       );
       return response.data;
@@ -65,16 +67,16 @@ export const useUsersApi = () => {
   
     const deleteUser = async (userId: string): Promise<void> => {
       await axiosInstance.delete<UserResponseModel>(
-          `/users/${userId}`
+          `${backendUrl}/users/${userId}`
       );
     };
 
     const getUserByEmail = async (email: string): Promise<UserResponseModel> => {
         const response = await axiosInstance.get<UserResponseModel>(
-            `/users/email/${email}`
+            `${backendUrl}/users/email/${email}`
         );
         return response.data;
-    }
+    };
   
     return {
       getAllUsers,

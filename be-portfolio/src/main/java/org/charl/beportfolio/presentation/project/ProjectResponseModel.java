@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectResponseModel {
+    private String projectId;
     private String title;
     private String description;
     private List<String> programmingLanguages;

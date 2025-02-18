@@ -12,6 +12,9 @@ public class ProjectEntityModelUtil {
         ProjectResponseModel projectResponseModel = new ProjectResponseModel();
         BeanUtils.copyProperties(project, projectResponseModel);
 
+        if (project.getProjectId() != null) {
+            projectResponseModel.setProjectId(project.getProjectId());
+        }
         if (project.getTitle() != null) {
             projectResponseModel.setTitle(project.getTitle());
         }
@@ -37,7 +40,7 @@ public class ProjectEntityModelUtil {
     // Method to map a ProjectRequestModel to a Project entity
     public static Project toProjectEntity(ProjectRequestModel projectRequestModel) {
         return Project.builder()
-                .id(generateUUIDString()) // Generate a unique projectId
+                .projectId(generateUUIDString()) // Generate a unique projectId
                 .title(projectRequestModel.getTitle())
                 .description(projectRequestModel.getDescription())
                 .programmingLanguages(projectRequestModel.getProgrammingLanguages())

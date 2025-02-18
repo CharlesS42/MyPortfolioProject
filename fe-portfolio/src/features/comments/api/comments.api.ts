@@ -6,11 +6,23 @@ import {
 
 export const useCommentsApi = () => {
     const axiosInstance = useAxiosInstance();
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+    /*
+    const getAllComments = async (): Promise<CommentResponseModel[]> => {
+      // Use menuResponseModel[] directly in the get call
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await axiosInstance.get<CommentResponseModel[]>(
+        `${backendUrl}/comments`
+      );
+      return response.data;
+    };
+    */
   
     const getAllComments = async (): Promise<CommentResponseModel[]> => {
       const comments: CommentResponseModel[] = [];
   
-      const response = await axiosInstance.get("/comments", {
+      const response = await axiosInstance.get(`${backendUrl}/comments`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -37,7 +49,7 @@ export const useCommentsApi = () => {
         commentId: string
     ): Promise<CommentResponseModel> => {
       const response = await axiosInstance.get<CommentResponseModel>(
-          `/comments/${commentId}`
+          `${backendUrl}/comments/${commentId}`
       );
       return response.data;
     };
@@ -46,7 +58,7 @@ export const useCommentsApi = () => {
         comment: CommentRequestModel
     ): Promise<CommentResponseModel> => {
       const response = await axiosInstance.post<CommentResponseModel>(
-          "/comments",
+          `${backendUrl}/comments`,
           comment
       );
       return response.data;
@@ -57,7 +69,7 @@ export const useCommentsApi = () => {
         commentId: string
     ): Promise<CommentResponseModel> => {
       const response = await axiosInstance.put<CommentResponseModel>(
-          `/comments/${commentId}`,
+          `${backendUrl}/comments/${commentId}`,
           comment
       );
       return response.data;
@@ -65,7 +77,7 @@ export const useCommentsApi = () => {
   
     const deleteComment = async (commentId: string): Promise<void> => {
       await axiosInstance.delete<CommentResponseModel>(
-          `/comments/${commentId}`
+          `${backendUrl}/comments/${commentId}`
       );
     };
   
