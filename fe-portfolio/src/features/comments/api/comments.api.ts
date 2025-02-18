@@ -1,18 +1,18 @@
-import { useAxiosInstance } from "../../../shared/axios/useAxiosInstance";
+import useAxiosInstance  from "../../../shared/axios/useAxiosInstance";
 import {
     CommentRequestModel,
     CommentResponseModel
 } from "../models/comments.model";
 
 export const useCommentsApi = () => {
-    const axiosInstance = useAxiosInstance();
+    
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
     /*
     const getAllComments = async (): Promise<CommentResponseModel[]> => {
       // Use menuResponseModel[] directly in the get call
       const backendUrl = process.env.REACT_APP_BACKEND_URL;
-      const response = await axiosInstance.get<CommentResponseModel[]>(
+      const response = await useAxiosInstance.get<CommentResponseModel[]>(
         `${backendUrl}/comments`
       );
       return response.data;
@@ -22,7 +22,7 @@ export const useCommentsApi = () => {
     const getAllComments = async (): Promise<CommentResponseModel[]> => {
       const comments: CommentResponseModel[] = [];
   
-      const response = await axiosInstance.get(`${backendUrl}/comments`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/comments`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -48,7 +48,7 @@ export const useCommentsApi = () => {
     const getCommentById = async (
         commentId: string
     ): Promise<CommentResponseModel> => {
-      const response = await axiosInstance.get<CommentResponseModel>(
+      const response = await useAxiosInstance.get<CommentResponseModel>(
           `${backendUrl}/comments/${commentId}`
       );
       return response.data;
@@ -57,7 +57,7 @@ export const useCommentsApi = () => {
     const addComment = async (
         comment: CommentRequestModel
     ): Promise<CommentResponseModel> => {
-      const response = await axiosInstance.post<CommentResponseModel>(
+      const response = await useAxiosInstance.post<CommentResponseModel>(
           `${backendUrl}/comments`,
           comment
       );
@@ -68,7 +68,7 @@ export const useCommentsApi = () => {
         comment: CommentRequestModel,
         commentId: string
     ): Promise<CommentResponseModel> => {
-      const response = await axiosInstance.put<CommentResponseModel>(
+      const response = await useAxiosInstance.put<CommentResponseModel>(
           `${backendUrl}/comments/${commentId}`,
           comment
       );
@@ -76,7 +76,7 @@ export const useCommentsApi = () => {
     };
   
     const deleteComment = async (commentId: string): Promise<void> => {
-      await axiosInstance.delete<CommentResponseModel>(
+      await useAxiosInstance.delete<CommentResponseModel>(
           `${backendUrl}/comments/${commentId}`
       );
     };

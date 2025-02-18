@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtGrantedAuthoritiesConverterAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
@@ -35,12 +36,14 @@ public class SecurityConfig {
         log.info("Initializing Security Web Filter Chain...");
 
         return http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF
+                .csrf(csrf -> csrf.disable())
                 .authorizeExchange(authz -> {
                     log.info("Configuring endpoint permissions...");
-                    authz
-                            .pathMatchers("/api/v1/payments/webhook").permitAll()
-                            .pathMatchers("**").authenticated() // Require authentication for all other endpoints
+                    // Allow unauthenticated access to these endpoints
+                    authz.matchers(ServerWebExchangeMatchers.pathMatchers("**")).permitAll()
+                            // Require authentication for the users endpoint
+                            .matchers(ServerWebExchangeMatchers.pathMatchers("/api/v1/users/**")).authenticated()
+                            // Any other endpoint will be public
                             .anyExchange().permitAll();
                     log.info("Finished configuring endpoint permissions.");
                 })
@@ -88,6 +91,8 @@ public class SecurityConfig {
         corsConfig.addAllowedOrigin(frontendDomain);
         corsConfig.addAllowedOrigin(auth0Domain);
         corsConfig.addAllowedOrigin("https://fe-portfolio-9woop.ondigitalocean.app/");
+        corsConfig.addAllowedOrigin("https://dev-cq56s7o31sbqbig8.us.auth0.com/");
+        corsConfig.addAllowedOrigin("http://localhost:3000");
         corsConfig.addAllowedHeader("*");
         corsConfig.addAllowedMethod("*");
         corsConfig.setAllowCredentials(true);

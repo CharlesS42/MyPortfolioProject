@@ -23,6 +23,8 @@ const HomeDetails: React.FC = () => {
   const fetchProjects = async () => {
     try {
       const projectsData = await getAllProjects();
+      const token = localStorage.getItem("access_token");
+      console.log("Token:", token);
       setProjects(projectsData);
     } catch (error) {
       console.error("Error fetching projects:", error);

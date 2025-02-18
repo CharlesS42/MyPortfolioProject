@@ -1,17 +1,17 @@
-import { useAxiosInstance } from "../../../shared/axios/useAxiosInstance";
+import useAxiosInstance  from "../../../shared/axios/useAxiosInstance";
 import {
     SkillRequestModel,
     SkillResponseModel
 } from "../models/skills.model";
 
 export const useSkillsApi = () => {
-    const axiosInstance = useAxiosInstance();
+    
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllSkills = async (): Promise<SkillResponseModel[]> => {
       const skills: SkillResponseModel[] = [];
   
-      const response = await axiosInstance.get(`${backendUrl}/skills`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/skills`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -37,7 +37,7 @@ export const useSkillsApi = () => {
     const getSkillById = async (
         skillId: string
     ): Promise<SkillResponseModel> => {
-      const response = await axiosInstance.get<SkillResponseModel>(
+      const response = await useAxiosInstance.get<SkillResponseModel>(
           `${backendUrl}/skills/${skillId}`
       );
       return response.data;
@@ -46,7 +46,7 @@ export const useSkillsApi = () => {
     const addSkill = async (
         skill: SkillRequestModel
     ): Promise<SkillResponseModel> => {
-      const response = await axiosInstance.post<SkillResponseModel>(
+      const response = await useAxiosInstance.post<SkillResponseModel>(
           `${backendUrl}/skills`,
           skill
       );
@@ -57,7 +57,7 @@ export const useSkillsApi = () => {
         skill: SkillRequestModel,
         skillId: string
     ): Promise<SkillResponseModel> => {
-      const response = await axiosInstance.put<SkillResponseModel>(
+      const response = await useAxiosInstance.put<SkillResponseModel>(
           `${backendUrl}/skills/${skillId}`,
           skill
       );
@@ -65,7 +65,7 @@ export const useSkillsApi = () => {
     };
   
     const deleteSkill = async (skillId: string): Promise<void> => {
-      await axiosInstance.delete<SkillResponseModel>(
+      await useAxiosInstance.delete<SkillResponseModel>(
           `${backendUrl}/skills/${skillId}`
       );
     };

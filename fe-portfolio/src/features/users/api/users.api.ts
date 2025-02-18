@@ -1,17 +1,17 @@
-import { useAxiosInstance } from "../../../shared/axios/useAxiosInstance";
+import useAxiosInstance from "../../../shared/axios/useAxiosInstance";
 import {
     UserRequestModel,
     UserResponseModel
 } from "../models/users.model";
 
 export const useUsersApi = () => {
-    const axiosInstance = useAxiosInstance();
+    
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllUsers = async (): Promise<UserResponseModel[]> => {
       const users: UserResponseModel[] = [];
   
-      const response = await axiosInstance.get(`${backendUrl}/users`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/users`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -38,7 +38,7 @@ export const useUsersApi = () => {
     const getUserById = async (
         userId: string
     ): Promise<UserResponseModel> => {
-      const response = await axiosInstance.get<UserResponseModel>(
+      const response = await useAxiosInstance.get<UserResponseModel>(
           `${backendUrl}/users/${userId}`
       );
       return response.data;
@@ -47,7 +47,7 @@ export const useUsersApi = () => {
     const addUser = async (
         user: UserRequestModel
     ): Promise<UserResponseModel> => {
-      const response = await axiosInstance.post<UserResponseModel>(
+      const response = await useAxiosInstance.post<UserResponseModel>(
           `${backendUrl}/users`,
           user
       );
@@ -58,7 +58,7 @@ export const useUsersApi = () => {
         user: UserRequestModel,
         userId: string
     ): Promise<UserResponseModel> => {
-      const response = await axiosInstance.put<UserResponseModel>(
+      const response = await useAxiosInstance.put<UserResponseModel>(
           `${backendUrl}/users/${userId}`,
           user
       );
@@ -66,13 +66,13 @@ export const useUsersApi = () => {
     };
   
     const deleteUser = async (userId: string): Promise<void> => {
-      await axiosInstance.delete<UserResponseModel>(
+      await useAxiosInstance.delete<UserResponseModel>(
           `${backendUrl}/users/${userId}`
       );
     };
 
     const getUserByEmail = async (email: string): Promise<UserResponseModel> => {
-        const response = await axiosInstance.get<UserResponseModel>(
+        const response = await useAxiosInstance.get<UserResponseModel>(
             `${backendUrl}/users/email/${email}`
         );
         return response.data;

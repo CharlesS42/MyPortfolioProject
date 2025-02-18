@@ -1,17 +1,17 @@
-import { useAxiosInstance } from "../../../shared/axios/useAxiosInstance";
+import useAxiosInstance  from "../../../shared/axios/useAxiosInstance";
 import {
     MessageRequestModel,
     MessageResponseModel
 } from "../models/messages.model";
 
 export const useMessagesApi = () => {
-    const axiosInstance = useAxiosInstance();
+    
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllMessages = async (): Promise<MessageResponseModel[]> => {
       const messages: MessageResponseModel[] = [];
   
-      const response = await axiosInstance.get(`${backendUrl}/messages`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/messages`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -37,7 +37,7 @@ export const useMessagesApi = () => {
     const getMessageById = async (
         messageId: string
     ): Promise<MessageResponseModel> => {
-      const response = await axiosInstance.get<MessageResponseModel>(
+      const response = await useAxiosInstance.get<MessageResponseModel>(
           `${backendUrl}/messages/${messageId}`
       );
       return response.data;
@@ -46,7 +46,7 @@ export const useMessagesApi = () => {
     const addMessage = async (
         message: MessageRequestModel
     ): Promise<MessageResponseModel> => {
-      const response = await axiosInstance.post<MessageResponseModel>(
+      const response = await useAxiosInstance.post<MessageResponseModel>(
           `${backendUrl}/messages`,
           message
       );
@@ -54,7 +54,7 @@ export const useMessagesApi = () => {
     };
   
     const deleteMessage = async (messageId: string): Promise<void> => {
-      await axiosInstance.delete<MessageResponseModel>(
+      await useAxiosInstance.delete<MessageResponseModel>(
           `${backendUrl}/messages/${messageId}`
       );
     };

@@ -1,16 +1,16 @@
-import { useAxiosInstance } from "../../../shared/axios/useAxiosInstance";
+import useAxiosInstance  from "../../../shared/axios/useAxiosInstance";
 import {
     ProjectRequestModel,
     ProjectResponseModel
 } from "../models/projects.model";
 
 export const useProjectsApi = () => {
-    const axiosInstance = useAxiosInstance();
+    
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllProjects = async (): Promise<ProjectResponseModel[]> => {
       const projects: ProjectResponseModel[] = [];
-      const response = await axiosInstance.get(`${backendUrl}/projects`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/projects`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -36,7 +36,7 @@ export const useProjectsApi = () => {
     const getProjectById = async (
         projectId: string
     ): Promise<ProjectResponseModel> => {
-      const response = await axiosInstance.get<ProjectResponseModel>(
+      const response = await useAxiosInstance.get<ProjectResponseModel>(
           `${backendUrl}/projects/${projectId}`
       );
       return response.data;
@@ -45,7 +45,7 @@ export const useProjectsApi = () => {
     const addProject = async (
         project: ProjectRequestModel
     ): Promise<ProjectResponseModel> => {
-      const response = await axiosInstance.post<ProjectResponseModel>(
+      const response = await useAxiosInstance.post<ProjectResponseModel>(
           `${backendUrl}/projects`,
           project
       );
@@ -56,7 +56,7 @@ export const useProjectsApi = () => {
         project: ProjectRequestModel,
         projectId: string
     ): Promise<ProjectResponseModel> => {
-      const response = await axiosInstance.put<ProjectResponseModel>(
+      const response = await useAxiosInstance.put<ProjectResponseModel>(
           `${backendUrl}/projects/${projectId}`,
           project
       );
@@ -64,7 +64,7 @@ export const useProjectsApi = () => {
     };
   
     const deleteProject = async (projectId: string): Promise<void> => {
-      await axiosInstance.delete<ProjectResponseModel>(
+      await useAxiosInstance.delete<ProjectResponseModel>(
           `${backendUrl}/projects/${projectId}`
       );
     };
