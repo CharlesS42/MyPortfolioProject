@@ -26,6 +26,7 @@ services:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://doadmin:4D2C6u135A98qBJZ@db-mongodb-nyc3-21701-99773d15.mongo.ondigitalocean.com/admin?retryWrites=true&w=majority
     env_file:
       - be-portfolio/.env
     depends_on:

@@ -11,13 +11,10 @@ logging:
 spring:
   data:
     mongodb:
-      username: user
-      password: pwd
-      host: localhost
-      port: 27017
-      database: portfolio
+      uri: mongodb+srv://doadmin:4D2C6u135A98qBJZ@db-mongodb-nyc3-21701-99773d15.mongo.ondigitalocean.com/admin?retryWrites=true&w=majority
       authentication-database: admin
       auto-index-creation: true
+
 de:
   flapdoodle:
     mongodb:
