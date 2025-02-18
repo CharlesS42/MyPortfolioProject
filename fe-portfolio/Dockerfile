@@ -17,21 +17,36 @@ COPY . .
 RUN npm run build
 
 # Use a smaller, lightweight base image for the final image
+#FROM nginx:alpine
+#
+## Adjust permissions for Nginx
+#RUN chown -R nginx:nginx /var/cache/nginx /var/run /var/log/nginx
+#RUN chown -R nginx:0 /usr/share/nginx/html && \
+#    chmod -R g+r+rwX /usr/share/nginx/html
+#
+## Copy the build output to NGINX's default static file serving directory
+#COPY --from=build /app/build /usr/share/nginx/html
+#
+## Copy the default NGINX configuration file
+#COPY nginx.conf /etc/nginx/nginx.conf
+#
+## Expose port 80 for the NGINX web server
+#EXPOSE 80
+#
+## Command to run NGINX
+#CMD ["nginx", "-g", "daemon off;"]
+
 FROM nginx:alpine
 
-# Adjust permissions for Nginx
-RUN chown -R nginx:nginx /var/cache/nginx /var/run /var/log/nginx
-RUN chown -R nginx:0 /usr/share/nginx/html && \
-    chmod -R g+r+rwX /usr/share/nginx/html
+# Create necessary directories if they don't exist
+RUN mkdir -p /var/run && \
+    mkdir -p /var/cache/nginx && \
+    mkdir -p /var/log/nginx && \
+    chown -R nginx:nginx /var/cache/nginx /var/run /var/log/nginx
 
-# Copy the build output to NGINX's default static file serving directory
-COPY --from=build /app/build /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-# Copy the default NGINX configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80 for the NGINX web server
 EXPOSE 80
 
-# Command to run NGINX
 CMD ["nginx", "-g", "daemon off;"]
+
