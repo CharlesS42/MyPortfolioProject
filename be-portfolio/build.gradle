@@ -53,11 +53,6 @@ dependencies {
     testImplementation 'org.mock-server:mockserver-netty:5.14.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation 'com.okta.spring:okta-spring-boot-starter:3.0.5'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
     /*
     implementation 'software.amazon.awssdk:s3:2.20.47'  // AWS S3 SDK
@@ -71,6 +66,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     testImplementation('org.springframework.security:spring-security-test')
+
+
+    implementation 'com.okta.spring:okta-spring-boot-starter:3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
      */
 }
 
