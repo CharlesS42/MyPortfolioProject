@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
           <Card.Body className="p-0 d-flex flex-column">
             <Tab.Container activeKey={activeTab}>
               <Row className="g-0 flex-grow-1">
-                {/* Sidebar */}
+                {/* Sidebar  */}
                 <Col
                   sm={2}
                   className="bg-dark text-white d-flex flex-column"
