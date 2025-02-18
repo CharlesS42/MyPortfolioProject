@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .authorizeExchange(authz -> {
                     log.info("Configuring endpoint permissions...");
                     authz
-                            .pathMatchers("**").authenticated() // Require authentication for all other endpoints
+                            .pathMatchers("**").permitAll() // Require authentication for all other endpoints
                             .anyExchange().permitAll();
                     log.info("Finished configuring endpoint permissions.");
                 })

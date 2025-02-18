@@ -7,7 +7,6 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { auth0Config } from "./auth/auth0-config";
 import { AppRoutes } from "./shared/models/app.routes";
-import "./i18n";
 //import { UserProvider } from "./context/UserContext";
 //import { ToastContainer } from 'react-toastify'; // Import ToastContainer
 
