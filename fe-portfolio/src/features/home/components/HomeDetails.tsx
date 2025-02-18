@@ -3,22 +3,18 @@ import "./HomeDetails.css";
 import { useProjectsApi } from "../../projects/api/projects.api";
 import { useSkillsApi } from "../../skills/api/skills.api";
 import { useCommentsApi } from "../../comments/api/comments.api";
-import { useCVsApi } from "../../cv/api/cv.api";
 import { ProjectResponseModel } from "../../projects/models/projects.model";
 import { SkillResponseModel } from "../../skills/models/skills.model";
 import { CommentResponseModel } from "../../comments/models/comments.model";
-import { CVResponseModel } from "../../cv/models/cv.model";
 
 const HomeDetails: React.FC = () => {
   const { getAllProjects } = useProjectsApi();
   const { getAllSkills } = useSkillsApi();
   const { getAllComments } = useCommentsApi();
-  const { getCV } = useCVsApi();
 
   const [projects, setProjects] = useState<ProjectResponseModel[]>([]);
   const [skills, setSkills] = useState<SkillResponseModel[]>([]);
   const [comments, setComments] = useState<CommentResponseModel[]>([]);
-  const [cv, setCv] = useState<CVResponseModel | null>(null);
 
   const fetchProjects = async () => {
     try {
@@ -49,20 +45,10 @@ const HomeDetails: React.FC = () => {
     }
   };
 
-  const fetchCV = async () => {
-    try {
-      const cvData = await getCV();
-      setCv(cvData);
-    } catch (error) {
-      console.error("Error fetching CV:", error);
-    }
-  };
-
   useEffect(() => {
     fetchProjects();
     fetchSkills();
     fetchComments();
-    fetchCV();
   }, []); // Only fetch once on mount
 
   return (
@@ -81,17 +67,10 @@ const HomeDetails: React.FC = () => {
           </div>
         </section>
         <section className="cv-section">
-          {cv ? (
-            <div className="cv-container">
-              <p>
-                <strong>{cv.fileName}</strong>
-                <a href={cv.fileUrl} target="_blank" rel="noopener noreferrer" className="cv-link"><img src="/assets/download_icon.png" alt="Download CV"/></a>
-              </p>
-              <p><small>Uploaded at: {new Date(cv.uploadedAt).toLocaleDateString()}</small></p>
-            </div>
-          ) : (
-            <p>Loading CV...</p>
-          )}
+          <h2>My CV</h2>   
+          <a href="/assets/Charles_Seguin_CV.pdf" target="_blank" rel="noopener noreferrer" download className="cv-link">
+            <button>Download CV</button>
+          </a>
         </section>
       </div>
 
