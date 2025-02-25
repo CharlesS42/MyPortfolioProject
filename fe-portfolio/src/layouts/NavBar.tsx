@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AppRoutes } from "../shared/models/app.routes";
-import "./NavBar.css";
+import "./NavBar.css"; 
 
 const NavBar: React.FC = () => {
 
