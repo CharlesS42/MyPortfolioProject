@@ -3,12 +3,12 @@ export interface UserResponseModel {
     fullName: string;
     email: string;
     company: string;
-    role: string;
+    roles: string[];
 }
 
 export interface UserRequestModel {
     fullName: string;
     email: string;
     company: string;
-    role: string;
+    roles: string[];
 }

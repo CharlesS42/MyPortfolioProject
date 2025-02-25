@@ -41,12 +41,9 @@ public class SecurityConfig {
                     log.info("Configuring endpoint permissions...");
                     // Allow unauthenticated access to these endpoints
                     authz
-                            .pathMatchers("/api/v1/comments").permitAll()
-                            .pathMatchers("/api/v1/messages/get").permitAll()
-                            .pathMatchers("/api/v1/projects/get").permitAll()
-                            .pathMatchers("/api/v1/skills/get").permitAll()
-                            .pathMatchers("/api/v1/users/**").permitAll()
+                            .pathMatchers("/api/v1/**").permitAll()
                             .pathMatchers("**").permitAll();
+
                             // Any other endpoint will be public
                             //.anyExchange().permitAll();
                     log.info("Finished configuring endpoint permissions.");

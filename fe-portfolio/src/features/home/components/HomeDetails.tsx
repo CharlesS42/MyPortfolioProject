@@ -95,7 +95,6 @@ const HomeDetails: React.FC = () => {
           </div>
         </section>
         <section className="cv-section">
-          <h2>My CV</h2>   
           <a href="/Charles_Seguin_Master_Resume_english.pdf" download="Charles_Seguin_Master_Resume_english.pdf" className="cv-link">
             <button>Download CV</button>
           </a>

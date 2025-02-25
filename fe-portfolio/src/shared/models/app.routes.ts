@@ -3,6 +3,7 @@ export enum AppRoutes {
     Home = '/home',
     Dashboard = '/dashboard',
     Callback = '/callback',
+    ContactUs = '/contact-us',
   
     // Error Routes
     Unauthorized = '/unauthorized',

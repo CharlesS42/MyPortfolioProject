@@ -1,10 +1,12 @@
+/*
 import React, { useState, useEffect } from "react";
 import { Button, Table, Modal, Form } from "react-bootstrap";
 import { useUsersApi } from "../../../users/api/users.api";
 import { UserResponseModel, UserRequestModel } from "../../../users/models/users.model";
-
+*/
 
 const UsersTab: React.FC = () => {
+  /*
   const { getAllUsers, getUserById, addUser, updateUser, deleteUser } = useUsersApi();
   const [users, setUsers] = useState<UserResponseModel[]>([]);
   const [showModal, setShowModal] = useState(false);
@@ -45,7 +47,7 @@ const UsersTab: React.FC = () => {
       if (modalType === "create") {
         await addUser(formData);
       } else if (modalType === "update" && selectedUser) {
-        await updateUser(formData, selectedUser.userId);
+        await updateUser(selectedUser.userId, formData);
       }
       setShowModal(false);
       await fetchUsers();
@@ -193,6 +195,8 @@ const UsersTab: React.FC = () => {
       </Modal>
     </div>
   );
+  */
+  return <div />;
 };
 
 export default UsersTab;

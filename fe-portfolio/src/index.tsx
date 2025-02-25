@@ -7,8 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { auth0Config } from "./auth/auth0-config";
 import { AppRoutes } from "./shared/models/app.routes";
-//import { UserProvider } from "./context/UserContext";
-//import { ToastContainer } from 'react-toastify'; // Import ToastContainer
+import { UserProvider } from "./context/UserContext";
 
 const elfsightScript = document.createElement("script");
 elfsightScript.src = "https://static.elfsight.com/platform/platform.js";
@@ -46,10 +45,9 @@ root.render(
       onRedirectCallback={onRedirectCallback}
       cacheLocation="localstorage"
     >
-      {/* <UserProvider> */}
+      <UserProvider>
         <App />
-        {/* <ToastContainer /> */}
-      {/* </UserProvider>*/} 
+      </UserProvider> 
     </Auth0Provider>
   </React.StrictMode>
 );
