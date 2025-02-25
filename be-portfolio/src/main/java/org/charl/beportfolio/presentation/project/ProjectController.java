@@ -19,7 +19,7 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/get", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ProjectResponseModel> getAllProjects() {
         log.info("Fetching all projects");
         return projectService.getAllProjects();

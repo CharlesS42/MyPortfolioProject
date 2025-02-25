@@ -9,8 +9,10 @@ export const useProjectsApi = () => {
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
     const getAllProjects = async (): Promise<ProjectResponseModel[]> => {
+      console.log(localStorage.getItem('access_token'));
+      
       const projects: ProjectResponseModel[] = [];
-      const response = await useAxiosInstance.get(`${backendUrl}/projects`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/projects/get`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",

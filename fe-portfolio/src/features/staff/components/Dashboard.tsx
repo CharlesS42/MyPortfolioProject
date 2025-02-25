@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Tab, Nav, Row, Col, Card } from "react-bootstrap";
-import UsersTab from "./Tabs/UsersTab";
 import MessagesTab from "./Tabs/MessagesTab";
 import CommentsTab from "./Tabs/CommentsTab";
 import SkillsTab from "./Tabs/SkillsTab";
 import ProjectsTab from "./Tabs/ProjectsTab";
-import CVTab from "./Tabs/CvTab";
 
 const Dashboard: React.FC = () => {
-    const [activeTab, setActiveTab] = useState("users");
+    const [activeTab, setActiveTab] = useState("messages");
   
     return (
       <div
@@ -42,21 +40,6 @@ const Dashboard: React.FC = () => {
                   </h4>
                     {/* Tab List */}
                     <Nav className="flex-column text-center">
-                    <Nav.Item>
-                        <Nav.Link
-                        eventKey="users"
-                        onClick={() => setActiveTab("users")}
-                        className={`text-white px-3 py-2 ${
-                            activeTab === "users" ? "bg-secondary" : ""
-                        }`}
-                        style={{
-                            fontWeight: activeTab === "users" ? "bold" : "normal",
-                            borderRadius: "10px",
-                        }}
-                        >
-                            Users
-                        </Nav.Link>
-                    </Nav.Item>
                     <Nav.Item>
                         <Nav.Link
                         eventKey="messages"
@@ -117,21 +100,6 @@ const Dashboard: React.FC = () => {
                             Projects
                         </Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link
-                        eventKey="cv"
-                        onClick={() => setActiveTab("cv")}
-                        className={`text-white px-3 py-2 ${
-                            activeTab === "cv" ? "bg-secondary" : ""
-                        }`}
-                        style={{
-                            fontWeight: activeTab === "cv" ? "bold" : "normal",
-                            borderRadius: "10px",
-                        }}
-                        >
-                            CV
-                        </Nav.Link>
-                    </Nav.Item>
                 
                   </Nav>
               </Col>
@@ -147,9 +115,6 @@ const Dashboard: React.FC = () => {
                 }}
               >
                 <Tab.Content>
-                  <Tab.Pane eventKey="users">
-                    <UsersTab />
-                  </Tab.Pane>
                   <Tab.Pane eventKey="messages">
                     <MessagesTab />
                   </Tab.Pane>
@@ -161,9 +126,6 @@ const Dashboard: React.FC = () => {
                   </Tab.Pane>
                   <Tab.Pane eventKey="projects">
                     <ProjectsTab />
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="cv">
-                    <CVTab />
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

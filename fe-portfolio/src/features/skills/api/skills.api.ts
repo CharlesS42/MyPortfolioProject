@@ -11,7 +11,7 @@ export const useSkillsApi = () => {
     const getAllSkills = async (): Promise<SkillResponseModel[]> => {
       const skills: SkillResponseModel[] = [];
   
-      const response = await useAxiosInstance.get(`${backendUrl}/skills`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/skills/get`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",

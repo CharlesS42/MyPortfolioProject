@@ -19,7 +19,7 @@ public class SkillController {
 
     private final SkillService skillService;
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/get", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<SkillResponseModel> getAllSkills() {
         log.info("Fetching all skills");
         return skillService.getAllSkills();

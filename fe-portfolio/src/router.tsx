@@ -4,8 +4,8 @@ import Layout from './layouts/Layout';
 import HomePage from './pages/HomePage';
 //import ProtectedRoute from './components/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage';
-/*
 import UnauthorizedPage from './pages/errors/UnauthorizedPage';
+/*
 import ForbiddenPage from './pages/errors/ForbiddenPage';
 import RequestTimeoutPage from './pages/errors/RequestTimeoutPage';
 import InternalServerErrorPage from './pages/errors/InternalServerErrorPage';
@@ -28,7 +28,6 @@ const router = createBrowserRouter([
               <DashboardPage />
           ),
         },
-        /*
         {
           path: AppRoutes.Unauthorized,
           element: (
@@ -37,6 +36,7 @@ const router = createBrowserRouter([
             
           ),
         },
+        /*
         {
           path: AppRoutes.Forbidden,
           element: (

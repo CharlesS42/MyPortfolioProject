@@ -40,11 +40,15 @@ public class SecurityConfig {
                 .authorizeExchange(authz -> {
                     log.info("Configuring endpoint permissions...");
                     // Allow unauthenticated access to these endpoints
-                    authz.matchers(ServerWebExchangeMatchers.pathMatchers("**")).permitAll()
-                            // Require authentication for the users endpoint
-                            .matchers(ServerWebExchangeMatchers.pathMatchers("/api/v1/users/**")).authenticated()
+                    authz
+                            .pathMatchers("/api/v1/comments").permitAll()
+                            .pathMatchers("/api/v1/messages/get").permitAll()
+                            .pathMatchers("/api/v1/projects/get").permitAll()
+                            .pathMatchers("/api/v1/skills/get").permitAll()
+                            .pathMatchers("/api/v1/users/**").permitAll()
+                            .pathMatchers("**").permitAll();
                             // Any other endpoint will be public
-                            .anyExchange().permitAll();
+                            //.anyExchange().permitAll();
                     log.info("Finished configuring endpoint permissions.");
                 })
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))

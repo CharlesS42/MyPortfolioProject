@@ -19,7 +19,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/get", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<CommentResponseModel> getAllComments() {
         log.info("Fetching all comments");
         return commentService.getAllComments();

@@ -22,7 +22,7 @@ export const useCommentsApi = () => {
     const getAllComments = async (): Promise<CommentResponseModel[]> => {
       const comments: CommentResponseModel[] = [];
   
-      const response = await useAxiosInstance.get(`${backendUrl}/comments`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/comments/get`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",

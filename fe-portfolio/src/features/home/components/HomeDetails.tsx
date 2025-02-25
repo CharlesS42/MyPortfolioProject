@@ -5,22 +5,26 @@ import { useSkillsApi } from "../../skills/api/skills.api";
 import { useCommentsApi } from "../../comments/api/comments.api";
 import { ProjectResponseModel } from "../../projects/models/projects.model";
 import { SkillResponseModel } from "../../skills/models/skills.model";
-import { CommentResponseModel } from "../../comments/models/comments.model";
+import { CommentResponseModel, CommentRequestModel } from "../../comments/models/comments.model";
 
 const HomeDetails: React.FC = () => {
   const { getAllProjects } = useProjectsApi();
   const { getAllSkills } = useSkillsApi();
-  const { getAllComments } = useCommentsApi();
+  const { getAllComments, addComment } = useCommentsApi();
 
   const [projects, setProjects] = useState<ProjectResponseModel[]>([]);
   const [skills, setSkills] = useState<SkillResponseModel[]>([]);
   const [comments, setComments] = useState<CommentResponseModel[]>([]);
+  const [newComment, setNewComment] = useState<CommentRequestModel>({
+    userId: "", // You can generate a unique ID or leave it empty if not needed
+    userName: "",
+    content: "",
+    createdAt: new Date().toISOString(),
+  });
 
   const fetchProjects = async () => {
     try {
       const projectsData = await getAllProjects();
-      const token = localStorage.getItem("access_token");
-      console.log("Token:", token);
       setProjects(projectsData);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -42,6 +46,30 @@ const HomeDetails: React.FC = () => {
       setComments(commentsData);
     } catch (error) {
       console.error("Error fetching comments:", error);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setNewComment((prevComment) => ({
+      ...prevComment,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const addedComment = await addComment(newComment);
+      setComments((prevComments) => [...prevComments, addedComment]);
+      setNewComment({
+        userId: "",
+        userName: "",
+        content: "",
+        createdAt: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error("Error adding comment:", error);
     }
   };
 
@@ -68,7 +96,7 @@ const HomeDetails: React.FC = () => {
         </section>
         <section className="cv-section">
           <h2>My CV</h2>   
-          <a href="/assets/Charles_Seguin_CV.pdf" target="_blank" rel="noopener noreferrer" download className="cv-link">
+          <a href="/Charles_Seguin_Master_Resume_english.pdf" download="Charles_Seguin_Master_Resume_english.pdf" className="cv-link">
             <button>Download CV</button>
           </a>
         </section>
@@ -114,6 +142,24 @@ const HomeDetails: React.FC = () => {
               </div>
             ))}
           </div>
+          <form onSubmit={handleSubmit} className="comment-form">
+            <input
+              type="text"
+              name="userName"
+              value={newComment.userName}
+              onChange={handleInputChange}
+              placeholder="Your Name"
+              required
+            />
+            <textarea
+              name="content"
+              value={newComment.content}
+              onChange={handleInputChange}
+              placeholder="Your Comment"
+              required
+            />
+            <button type="submit">Submit</button>
+          </form>
         </section>
       </div>
     </div>

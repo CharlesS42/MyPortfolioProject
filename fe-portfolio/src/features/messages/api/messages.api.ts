@@ -11,7 +11,7 @@ export const useMessagesApi = () => {
     const getAllMessages = async (): Promise<MessageResponseModel[]> => {
       const messages: MessageResponseModel[] = [];
   
-      const response = await useAxiosInstance.get(`${backendUrl}/messages`, {
+      const response = await useAxiosInstance.get(`${backendUrl}/messages/get`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -38,7 +38,7 @@ export const useMessagesApi = () => {
         messageId: string
     ): Promise<MessageResponseModel> => {
       const response = await useAxiosInstance.get<MessageResponseModel>(
-          `${backendUrl}/messages/${messageId}`
+          `${backendUrl}/messages/${messageId}/get`
       );
       return response.data;
     };

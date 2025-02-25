@@ -61,6 +61,12 @@ public record GlobalErrorHandler(ObjectMapper mapper) implements ErrorWebExcepti
                 .map(response.bufferFactory()::wrap);
 
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
+
+        if (error.getMessage().contains("Jwt expired")) {
+            log.error("JWT expired: {}", error.getMessage());
+            response.getHeaders().add("WWW-Authenticate", "Bearer error=\"invalid_token\", error_description=\"The token expired\"");
+        }
+
         return response.writeWith(body);
     }
 

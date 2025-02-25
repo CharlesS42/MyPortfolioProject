@@ -19,7 +19,7 @@ public class ContactMessageController {
 
     private final ContactMessageService contactMessageService;
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/get", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ContactMessageResponseModel> getAllMessages() {
         log.info("Fetching all messages");
         return contactMessageService.getAllContactMessages();
