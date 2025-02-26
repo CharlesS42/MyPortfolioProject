@@ -136,7 +136,7 @@ const HomeDetails: React.FC = () => {
 
         <section className="portfolio-section" id="comments">
           <h2>{t("home.comments.title")}</h2>
-          <div className="comments-container">
+          <div className="comments-container" style={{ maxHeight: "300px", overflowY: "auto" }}>
             {comments.map((comment) => (
               <div key={comment.commentId} className="comment">
                 <p><strong>{comment.userName}</strong>: {comment.content}</p>

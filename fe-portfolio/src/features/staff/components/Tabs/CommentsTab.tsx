@@ -97,7 +97,6 @@ const CommentsTab: React.FC = () => {
                         variant="outline-success"
                         className="ms-2"
                         onClick={() => handleApprove(comment.commentId)}
-                        disabled={comment.approved}
                       >
                         {comment.approved ? t("comments.disapprove") : t("comments.approve")}
                       </Button>
