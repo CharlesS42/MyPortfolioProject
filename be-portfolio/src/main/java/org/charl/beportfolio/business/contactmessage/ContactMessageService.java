@@ -10,4 +10,5 @@ public interface ContactMessageService {
     Mono<ContactMessageResponseModel> getContactMessageById(String contactMessageId);
     Mono<ContactMessageResponseModel> addContactMessage(ContactMessageRequestModel contactMessageRequestModel);
     Mono<Void> deleteContactMessage(String contactMessageId);
+    Mono<ContactMessageResponseModel> sendContactMessageEmail(ContactMessageRequestModel contactMessageRequestModel);
 }

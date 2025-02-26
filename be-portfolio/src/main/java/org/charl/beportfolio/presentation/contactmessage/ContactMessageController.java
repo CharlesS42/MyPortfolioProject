@@ -46,5 +46,12 @@ public class ContactMessageController {
         log.info("Deleting message with id: {}", messageId);
         return contactMessageService.deleteContactMessage(messageId);
     }
+
+    @PostMapping(value = "/send", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mono<ContactMessageResponseModel> sendMessage(@RequestBody ContactMessageRequestModel messageRequestModel) {
+        log.info("Sending message");
+        return contactMessageService.sendContactMessageEmail(messageRequestModel);
+    }
 }
 

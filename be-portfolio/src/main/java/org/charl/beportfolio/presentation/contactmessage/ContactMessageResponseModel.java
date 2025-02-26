@@ -13,8 +13,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ContactMessageResponseModel {
     private String contactMessageId;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String subject;
     private String message;
     private LocalDateTime sentAt;
 }

@@ -15,6 +15,18 @@ spring:
       authentication-database: admin
       auto-index-creation: true
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: true
+
 de:
   flapdoodle:
     mongodb:

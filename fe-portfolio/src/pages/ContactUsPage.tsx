@@ -4,11 +4,13 @@ import { MessageRequestModel } from "../features/messages/models/messages.model"
 import { Form, Button, Container, Card, Alert, Spinner } from "react-bootstrap";
 
 const ContactUsPage: React.FC = () => {
-  const { addMessage } = useMessagesApi(); // Use API Hook
+  const { sendMessage } = useMessagesApi(); // Use API Hook
 
   const [formData, setFormData] = useState<Omit<MessageRequestModel, "sentAt">>({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    subject: "",
     message: "",
   });
 
@@ -31,13 +33,10 @@ const ContactUsPage: React.FC = () => {
         ...formData,
         sentAt: new Date().toISOString(),
       };
-      await addMessage(requestData);
+      await sendMessage(requestData);
       setSuccess("Your message has been sent successfully.");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ firstName: "", lastName: "", email: "", subject: "", message: "" });
 
-      // Open system email client
-      const mailtoLink = `mailto:charles.seg42@gmail.com?subject=${requestData.message}&body=Name: ${requestData.name}%0D%0AEmail: ${requestData.email}`;
-      window.location.href = mailtoLink;
     } catch (err) {
       setError("There was an error sending your message. Please try again.");
     } finally {
@@ -52,13 +51,26 @@ const ContactUsPage: React.FC = () => {
           <h2 className="text-center mb-4">Contact Us</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="name">Name</Form.Label>
+              <Form.Label htmlFor="firstname">First Name</Form.Label>
               <Form.Control
-                id="name"
+                id="firstname"
                 type="text"
-                name="name"
-                placeholder="Enter your name"
-                value={formData.name}
+                name="firstName"
+                placeholder="Enter your first name"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="lastname">Last Name</Form.Label>
+              <Form.Control
+                id="lastname"
+                type="text"
+                name="lastName"
+                placeholder="Enter your last name"
+                value={formData.lastName}
                 onChange={handleChange}
                 required
               />
@@ -80,10 +92,23 @@ const ContactUsPage: React.FC = () => {
             <Form.Group className="mb-3">
               <Form.Label htmlFor="message">Subject</Form.Label>
               <Form.Control
-                id="message"
+                id="subject"
                 type="text"
-                name="message"
+                name="subject"
                 placeholder="Enter the subject of your message"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="message">Message</Form.Label>
+              <Form.Control
+                as="textarea"
+                id="message"
+                name="message"
+                placeholder="Enter your message"
                 value={formData.message}
                 onChange={handleChange}
                 required

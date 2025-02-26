@@ -58,12 +58,21 @@ export const useMessagesApi = () => {
           `${backendUrl}/messages/${messageId}`
       );
     };
+
+    const sendMessage = async (message: MessageRequestModel): Promise<MessageResponseModel> => {
+        const response = await useAxiosInstance.post<MessageResponseModel>(
+            `${backendUrl}/messages/send`,
+            message
+        );
+        return response.data;
+    };
   
     return {
       getAllMessages,
       getMessageById,
       addMessage,
       deleteMessage,
+      sendMessage,
     };
   };
   

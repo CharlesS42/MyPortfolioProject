@@ -12,8 +12,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContactMessageRequestModel {
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String subject;
     private String message;
     private LocalDateTime sentAt;
 }

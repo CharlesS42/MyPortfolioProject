@@ -1,14 +1,18 @@
 export interface MessageResponseModel {
     contactMessageId: string;
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
+    subject: string;
     message: string;
-    sentAt: string;
+    sentAt: string; 
 }
 
 export interface MessageRequestModel {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
+    subject: string;
     message: string;
     sentAt: string;
 }

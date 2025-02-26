@@ -17,11 +17,17 @@ public class ContactMessageEntityModelUtil {
         if (message.getContactMessageId() != null) {
             contactMessageResponseModel.setContactMessageId(message.getContactMessageId());
         }
-        if (message.getName() != null) {
-            contactMessageResponseModel.setName(message.getName());
+        if (message.getFirstName() != null) {
+            contactMessageResponseModel.setFirstName(message.getFirstName());
+        }
+        if (message.getLastName() != null) {
+            contactMessageResponseModel.setLastName(message.getLastName());
         }
         if (message.getEmail() != null) {
             contactMessageResponseModel.setEmail(message.getEmail());
+        }
+        if (message.getSubject() != null) {
+            contactMessageResponseModel.setSubject(message.getSubject());
         }
         if (message.getMessage() != null) {
             contactMessageResponseModel.setMessage(message.getMessage());
@@ -37,8 +43,10 @@ public class ContactMessageEntityModelUtil {
     public static ContactMessage toContactMessageEntity(ContactMessageRequestModel messageRequestModel) {
         return ContactMessage.builder()
                 .contactMessageId(generateUUIDString()) // Generate a unique messageId
-                .name(messageRequestModel.getName())
+                .firstName(messageRequestModel.getFirstName())
+                .lastName(messageRequestModel.getLastName())
                 .email(messageRequestModel.getEmail())
+                .subject(messageRequestModel.getSubject())
                 .message(messageRequestModel.getMessage())
                 .sentAt(LocalDateTime.now())
                 .build();
