@@ -17,8 +17,4 @@ public class UserEntityModelUtil {
         model.setPermissions(user.getPermissions());
         return model;
     }
-    // Utility method to generate a UUID string
-    private static String generateUUIDString() {
-        return java.util.UUID.randomUUID().toString();
-    }
 }

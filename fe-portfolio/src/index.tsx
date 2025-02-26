@@ -41,6 +41,7 @@ root.render(
       clientId={auth0Config.clientId}
       authorizationParams={{
         redirect_uri: auth0Config.callback,
+        audience: auth0Config.audience,
         scope: "openid profile email",
       }}
       onRedirectCallback={onRedirectCallback}

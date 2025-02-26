@@ -12,7 +12,7 @@ export const useUsersApi = () => {
     const getAllUsers = async (): Promise<UserResponseModel[]> => {
       const users: UserResponseModel[] = [];
   
-      const response = await useAxiosInstance.get(`${backendUrl}/users`, {
+      const response = await axiosInstance.get(`/users`, {
         responseType: "text",
         headers: {
           Accept: "text/event-stream",
@@ -39,8 +39,8 @@ export const useUsersApi = () => {
     const getUserById = async (
         userId: string
     ): Promise<UserResponseModel> => {
-      const response = await useAxiosInstance.get<UserResponseModel>(
-          `${backendUrl}/users/${userId}`
+      const response = await axiosInstance.get<UserResponseModel>(
+          `/users/${userId}`
       );
       return response.data;
     };
@@ -48,8 +48,8 @@ export const useUsersApi = () => {
     const addUser = async (
         user: UserRequestModel
     ): Promise<UserResponseModel> => {
-      const response = await useAxiosInstance.post<UserResponseModel>(
-          `${backendUrl}/users`,
+      const response = await axiosInstance.post<UserResponseModel>(
+          `/users`,
           user
       );
       return response.data;
@@ -59,22 +59,22 @@ export const useUsersApi = () => {
         user: UserRequestModel,
         userId: string
     ): Promise<UserResponseModel> => {
-      const response = await useAxiosInstance.put<UserResponseModel>(
-          `${backendUrl}/users/${userId}`,
+      const response = await axiosInstance.put<UserResponseModel>(
+          `/users/${userId}`,
           user
       );
       return response.data;
     };
   
     const deleteUser = async (userId: string): Promise<void> => {
-      await useAxiosInstance.delete<UserResponseModel>(
-          `${backendUrl}/users/${userId}`
+      await axiosInstance.delete<UserResponseModel>(
+          `/users/${userId}`
       );
     };
 
     const getUserByEmail = async (email: string): Promise<UserResponseModel> => {
-        const response = await useAxiosInstance.get<UserResponseModel>(
-            `${backendUrl}/users/email/${email}`
+        const response = await axiosInstance.get<UserResponseModel>(
+            `/users/email/${email}`
         );
         return response.data;
     };
@@ -91,7 +91,7 @@ export const useUsersApi = () => {
   
 */
 import axios from "axios";
-import useAxiosInstance from "../../../shared/axios/useAxiosInstance";
+import { useAxiosInstance } from "../../../shared/axios/useAxiosInstance";
 import { UserRequestModel, UserResponseModel } from "../models/users.model";
 
 // Utility function to parse event-stream data
@@ -116,11 +116,12 @@ const parseEventStream = (data: string): UserResponseModel[] => {
 
 export const useUsersApi = () => {
 
+  const axiosInstance = useAxiosInstance();
   const getUser = async (userId: string): Promise<UserResponseModel | null> => {
     const encodedUserId = encodeURIComponent(userId);
 
     try {
-      const response = await useAxiosInstance.get<UserResponseModel>(
+      const response = await axiosInstance.get<UserResponseModel>(
         `/users/${encodedUserId}`
       );
       return response.data;
@@ -138,7 +139,7 @@ export const useUsersApi = () => {
 
   const loginUser = async (userId: string): Promise<UserResponseModel> => {
     const encodedUserId = encodeURIComponent(userId);
-    const response = await useAxiosInstance.post<UserResponseModel>(
+    const response = await axiosInstance.post<UserResponseModel>(
       `/users/${encodedUserId}/login`                                                                                         // Here using login
     );
     return response.data;
@@ -147,7 +148,7 @@ export const useUsersApi = () => {
   // Kinda wonky, this can be improved by using Token Claims to sync instead of fetching from Auth0 each time
   const syncUser = async (userId: string): Promise<UserResponseModel> => {
     const encodedUserId = encodeURIComponent(userId);
-    const response = await useAxiosInstance.put<UserResponseModel>(
+    const response = await axiosInstance.put<UserResponseModel>(
       `/users/${encodedUserId}/sync`                                                                                         // Here using sync
     );
     return response.data;
@@ -155,7 +156,7 @@ export const useUsersApi = () => {
 
   //get all users
   const getAllUsers = async (): Promise<UserResponseModel[]> => {
-    const response = await useAxiosInstance.get("/users", {
+    const response = await axiosInstance.get("/users", {
       responseType: "text",
       headers: {
         Accept: "text/event-stream",
@@ -167,7 +168,7 @@ export const useUsersApi = () => {
   // get user by Id
   const getUserById = async (userId: string): Promise<UserResponseModel> => {
     const encodedUserId = encodeURIComponent(userId);
-    const response = await useAxiosInstance.get<UserResponseModel>(
+    const response = await axiosInstance.get<UserResponseModel>(
       `/users/${encodedUserId}`
     );
     return response.data;
@@ -179,7 +180,7 @@ export const useUsersApi = () => {
   ): Promise<UserResponseModel> => {
     const encodedUserId = encodeURIComponent(userId);
     try {
-      const response = await useAxiosInstance.put<UserResponseModel>(
+      const response = await axiosInstance.put<UserResponseModel>(
         `/users/${encodedUserId}`,
         userData
       );
@@ -193,7 +194,7 @@ export const useUsersApi = () => {
   const updateUserRole = async (userId: string, roleIds: string[]): Promise<void> => {
     const encodedUserId = encodeURIComponent(userId);
     try {
-      await useAxiosInstance.post(`/users/${encodedUserId}/roles`, {                                                          // Here using sync
+      await axiosInstance.post(`/users/${encodedUserId}/roles`, {                                                          // Here using sync
         roles: roleIds, 
       });
     } catch (error) {

@@ -10,12 +10,8 @@ public interface UserService {
 
     Mono<UserResponseModel> addUserFromAuth0(String auth0UserId);
     Mono<UserResponseModel> syncUserWithAuth0(String auth0UserId);
+    Mono<UserResponseModel> getUserByUserId(String userId);
     Flux<UserResponseModel> getAllUsers();
-    Mono<UserResponseModel> getUserByUserId(String auth0UserId);
-    Flux<UserResponseModel> getStaff();
-    Mono<Void> deleteStaff(String userId);
-    Mono<UserResponseModel> updateStaff(Mono<UserRequestModel> userRequestModel, String userId);
-    Mono<UserResponseModel> addStaffRoleToUser(String auth0UserId);
-    Mono<UserResponseModel> updateUser(Mono<UserRequestModel> userRequestModel, String userId);
+    Mono<UserResponseModel> updateUser(UserRequestModel userRequestModel, String userId);
 }
 

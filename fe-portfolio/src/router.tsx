@@ -15,7 +15,6 @@ import { UserResponseModel } from './features/users/models/users.model';
 const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
   const { isAuthenticated, getAccessTokenSilently, isLoading } = useAuth0();
   const { getUserById } = useUsersApi();
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,8 +26,7 @@ const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
 
         if (userId) {
           const userData: UserResponseModel = await getUserById(userId);
-          if (userData.roles.includes('ROLE_ADMIN')) {
-            setIsAdmin(true);
+          if (userData.roles.includes('admin')) {
           }
         }
       } catch (error) {
@@ -49,7 +47,7 @@ const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
     return <div>Loading...</div>;
   }
 
-  return isAdmin ? element : <Navigate to={AppRoutes.Home} />;
+  return isAuthenticated ? element : <Navigate to={AppRoutes.Home} />;
 };
 
 const router = createBrowserRouter([

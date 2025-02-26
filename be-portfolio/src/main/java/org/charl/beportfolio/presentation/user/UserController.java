@@ -5,6 +5,7 @@ import org.charl.beportfolio.utils.exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -18,6 +19,15 @@ import reactor.core.publisher.Mono;
 public class UserController {
 
     private final UserService userService;
+
+    @GetMapping("/{userId}")
+    public Mono<ResponseEntity<UserResponseModel>> getUserById(@PathVariable String userId) {
+        return userService.getUserByUserId(userId)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build())
+                .doOnSuccess(response -> log.info("Fetched user details for ID: {}", userId))
+                .doOnError(error -> log.error("Error fetching user details for ID: {}", userId, error));
+    }
 
     @PostMapping("/{userId}/login")
     public Mono<ResponseEntity<UserResponseModel>> handleUserLogin(@PathVariable String userId) {
@@ -33,58 +43,17 @@ public class UserController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @GetMapping
-    public Flux<UserResponseModel> getAllUsers() {
-        log.info("Received request to fetch all users.");
-        return userService.getAllUsers()
-                .doOnNext(user -> log.info("Fetched user: {}", user))
-                .doOnError(e -> log.error("Error fetching all users: {}", e.getMessage()));
+    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<UserResponseModel> getAllUser() {
+        return userService.getAllUsers();
     }
 
-    @GetMapping("/{userId}")
-    public Mono<UserResponseModel> getUserByUserId(@PathVariable String userId) {
-        return userService.getUserByUserId(userId);
-    }
 
-    @GetMapping("/staff")
-    public Flux<UserResponseModel> getStaff() {
-        return userService.getStaff();
-    }
-
-    @DeleteMapping("/staff/{userId}")
-    public Mono<ResponseEntity<Void>> deleteStaff(@PathVariable String userId) {
-        return userService.deleteStaff(userId)
-                .then(Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)))
-                .onErrorResume(NotFoundException.class, e -> Mono.just(new ResponseEntity<Void>(HttpStatus.NOT_FOUND)));
-    }
-
-    @PutMapping("/staff/{userId}")
-    public Mono<ResponseEntity<UserResponseModel>> updateStaff(@RequestBody Mono<UserRequestModel> userRequestModel, @PathVariable String userId) {
-        return userService.updateStaff(userRequestModel, userId)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping("/staff/{userId}")
-    public Mono<ResponseEntity<UserResponseModel>> addStaffMember(@PathVariable String userId) {
-        log.info("Received request to add user with ID {} as staff", userId);
-
-        return userService.addStaffRoleToUser(userId)
-                .map(ResponseEntity::ok)
-                .onErrorResume(NotFoundException.class, e -> {
-                    log.error("User not found: {}", e.getMessage());
-                    return Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-                })
-                .onErrorResume(IllegalStateException.class, e -> {
-                    log.error("Invalid operation: {}", e.getMessage());
-                    return Mono.just(ResponseEntity.status(HttpStatus.CONFLICT).build());
-                })
-                .doOnError(e -> log.error("Error processing addStaffMember request: {}", e.getMessage()));
-    }
-
-    @PutMapping("/{userId}")
-    public Mono<ResponseEntity<UserResponseModel>> UpdateUser(@PathVariable String userId, @RequestBody Mono<UserRequestModel> userRequestModel) {
-        return userService.updateUser(userRequestModel,userId)
+    @PutMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<UserResponseModel>> updateUser(
+            @PathVariable String userId,
+            @RequestBody UserRequestModel userRequestModel) {
+        return userService.updateUser(userRequestModel, userId)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }

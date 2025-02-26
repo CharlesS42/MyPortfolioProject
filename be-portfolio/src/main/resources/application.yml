@@ -36,7 +36,7 @@ de:
 okta:
   oauth2:
     issuer: https://dev-cq56s7o31sbqbig8.us.auth0.com
-    audience: https://dev-cq56s7o31sbqbig8.us.auth0.com/api/v2/
+    audience: https://be-portfolio-api
 
 auth0:
   domain: dev-cq56s7o31sbqbig8.us.auth0.com

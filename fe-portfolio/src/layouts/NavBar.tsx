@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
+//import React, { useState } from 'react';
+import { Navbar, Nav, Container, NavDropdown, Button, Spinner } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AppRoutes } from "../shared/models/app.routes";
 import "./NavBar.css"; 
 import i18n from '../i18n';
 import { useTranslation } from 'react-i18next';
+import { useUserContext } from '../context/UserContext';
 
 const NavBar: React.FC = () => {
   const { t } = useTranslation();
 
-  const [, setLoading] = useState(false);
+  const { logout, user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
-  const { logout, user, isAuthenticated, isLoading } = useAuth0();
+  const { handleUserLogout } = useUserContext();
 
+  /*
   const handleLoginRedirect = (): void => {
     setLoading(true);
     
@@ -30,9 +32,15 @@ const NavBar: React.FC = () => {
       `prompt=login`;
       
   };
+  */
 
-  const handleLogout = (): void => {
+  const handleLogin = async () => {
+    await loginWithRedirect();
+  };
+
+  const handleLogout = async () => {
     logout({ logoutParams: { returnTo: window.location.origin } });
+    await handleUserLogout();
   };
 
   const handleLanguageChange = (lng: string) => {
@@ -42,6 +50,10 @@ const NavBar: React.FC = () => {
   }
 
   console.log("Current language:", i18n.language);
+
+  //const normalizedRoles = roles.map((role) => role.toLowerCase());
+  //const hasRole = (role: string) => normalizedRoles.includes(role.toLowerCase());
+  //const isAdmin = hasRole('admin');
 
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
@@ -55,9 +67,11 @@ const NavBar: React.FC = () => {
             <Nav.Link href={AppRoutes.ContactUs} className="px-3">
               {t('navbar.contactMe')}
             </Nav.Link>
-            <Nav.Link href={AppRoutes.Dashboard} className="px-3">
-              {t('navbar.dashboard')}
-            </Nav.Link>
+            {isAuthenticated && (
+              <Nav.Link href={AppRoutes.Dashboard} className="px-3">
+                {t('navbar.dashboard')}
+              </Nav.Link>
+            )}
             <NavDropdown
               title={
                 <img
@@ -78,18 +92,43 @@ const NavBar: React.FC = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            {isLoading ? (
-              <span>{t('navbar.loading')}</span>
-            ) : isAuthenticated ? (
-              <NavDropdown title={<img src={user?.picture} alt={user?.name} className="profile-icon" />} id="basic-nav-dropdown">
-                <NavDropdown.ItemText>{user?.name}</NavDropdown.ItemText>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}>{t('navbar.logout')}</NavDropdown.Item>
+          {isLoading ? (
+              <div className="loading-container">
+                <Spinner
+                  className="spinner-grow"
+                  animation="grow"
+                  variant="primary"
+                />
+              </div>
+            ) : isAuthenticated && user ? (
+              <NavDropdown
+                title={
+                  <>
+                    <img
+                      src={user.picture}
+                      alt={user.name}
+                      className="user-avatar"
+                    />{" "}
+                    {user.name}
+                  </>
+                }
+                id="user-dropdown"
+                align="end"
+              >
+                <NavDropdown.Item onClick={handleLogout}>
+                  Log out
+                </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <Button variant="primary" onClick={handleLoginRedirect}>
-                {t('navbar.login')}
-              </Button>
+              <>
+                <Button
+                  onClick={handleLogin}
+                  variant="outline-dark"
+                  className="me-2"
+                >
+                  {t("signIn")}
+                </Button>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>

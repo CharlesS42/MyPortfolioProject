@@ -1,14 +1,15 @@
-export interface UserResponseModel {
-    userId: string;
-    fullName: string;
+export interface UserRequestModel {
     email: string;
-    company: string;
-    roles: string[];
+    password: string;
+    firstName: string;
+    lastName: string;
 }
 
-export interface UserRequestModel {
-    fullName: string;
+export interface UserResponseModel {
+    userId: string;
     email: string;
-    company: string;
+    firstName: string;
+    lastName: string;
     roles: string[];
+    permissions: string[];
 }
