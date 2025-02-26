@@ -23,4 +23,5 @@ public class Comment {
     private String userName;
     private String content;
     private LocalDateTime createdAt;
+    private Boolean approved;
 }

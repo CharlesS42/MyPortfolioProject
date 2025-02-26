@@ -28,7 +28,7 @@ public class SkillEntityModelUtil {
     // Method to map a SkillRequestModel to a Skill entity
     public static Skill toSkillEntity(SkillRequestModel skillRequestModel) {
         return Skill.builder()
-                .id(generateUUIDString()) // Generate a unique skillId
+                .skillId(generateUUIDString()) // Generate a unique skillId
                 .name(skillRequestModel.getName())
                 .proficiencyLevel(skillRequestModel.getProficiencyLevel())
                 .category(skillRequestModel.getCategory())

@@ -60,5 +60,17 @@ public class CommentController {
         log.info("Fetching comments by user with id: {}", userId);
         return commentService.getCommentsByUserId(userId);
     }
+
+    @GetMapping(value = "/get/approved/{approved}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<CommentResponseModel> getCommentsByApproved(@PathVariable Boolean approved) {
+        log.info("Fetching comments by approved status: {}", approved);
+        return commentService.getCommentsByApproved(approved);
+    }
+
+    @PatchMapping(value = "/approve/{commentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Void> approveComment(@PathVariable String commentId) {
+        log.info("Approving comment with id: {}", commentId);
+        return commentService.approveComment(commentId);
+    }
 }
 

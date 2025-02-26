@@ -17,5 +17,9 @@ public interface CommentService {
     Mono<Void> deleteComment(String id);
 
     Flux<CommentResponseModel> getCommentsByUserId(String userId);
+
+    Flux<CommentResponseModel> getCommentsByApproved(Boolean approved);
+
+    Mono<Void> approveComment(String commentId);
 }
 

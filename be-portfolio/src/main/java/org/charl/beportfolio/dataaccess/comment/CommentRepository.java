@@ -9,4 +9,5 @@ import reactor.core.publisher.Mono;
 public interface CommentRepository extends ReactiveMongoRepository<Comment, String> {
     Mono<Comment> findCommentByCommentId(String commentId);
     Flux<Comment> findCommentsByUserId(String userId);
+    Flux<Comment> findCommentsByApproved(Boolean approved);
 }

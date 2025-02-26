@@ -37,7 +37,9 @@
       "title": "Commentaires",
       "placeholderName": "Votre nom",
       "placeholderComment": "Votre commentaire",
-      "submit": "Soumettre"
+      "submit": "Soumettre",
+      "successMessage": "Votre commentaire a été reçu et est en attente d'approbation.",
+      "errorMessage": "Une erreur s'est produite lors de la soumission de votre commentaire. Veuillez réessayer."
     },
     "errors": {
       "fetchProjects": "Erreur lors de la récupération des projets.",
@@ -86,17 +88,29 @@
     }
   },
   "comments": {
-    "delete": "Supprimer",
-    "title": "Commentaires",
     "user": "Utilisateur",
     "content": "Contenu",
+    "approved": "Approuvé",
+    "approvedYes": "Oui",
+    "approvedNo": "Non",
     "actions": "Actions",
+    "approve": "Approuver",
+    "disapprove": "Désapprouver",
+    "delete": "Supprimer",
     "modal": {
       "deleteTitle": "Supprimer le commentaire",
       "deleteConfirmation": "Êtes-vous sûr de vouloir supprimer ce commentaire ?",
       "cancel": "Annuler",
       "confirm": "Confirmer"
-    }
+    },
+    "errors": {
+      "fetch": "Erreur lors de la récupération des commentaires.",
+      "view": "Erreur lors de la visualisation du commentaire.",
+      "delete": "Erreur lors de la suppression du commentaire.",
+      "approve": "Erreur lors de l'approbation du commentaire."
+    },
+    "backToList": "Retour à la liste",
+    "title": "Commentaires"
   },
   "messages": {
     "create": "Créer un message",
@@ -105,6 +119,7 @@
     "title": "Messages",
     "name": "Nom",
     "email": "Email",
+    "subject": "Sujet",
     "content": "Contenu",
     "actions": "Actions",
     "modal": {
@@ -115,5 +130,21 @@
       "confirm": "Confirmer",
       "save": "Enregistrer"
     }
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "email": "Email",
+    "subject": "Sujet",
+    "message": "Message",
+    "firstNamePlaceholder": "Entrez votre prénom",
+    "lastNamePlaceholder": "Entrez votre nom de famille",
+    "emailPlaceholder": "Entrez votre email",
+    "subjectPlaceholder": "Entrez le sujet de votre message",
+    "messagePlaceholder": "Entrez votre message",
+    "submit": "Soumettre",
+    "successMessage": "Votre message a été envoyé avec succès.",
+    "errorMessage": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
   }
 }

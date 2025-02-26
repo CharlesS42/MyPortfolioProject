@@ -65,6 +65,7 @@ public class DatabaseLoader {
                         .userName("Charles Séguin")
                         .content("This is a great project!")
                         .createdAt(LocalDateTime.of(2025, 2, 9, 12, 0))
+                        .approved(true)
                         .build(),
                 Comment.builder()
                         .id(null)
@@ -73,6 +74,7 @@ public class DatabaseLoader {
                         .userName("John Doe")
                         .content("This is a great project!")
                         .createdAt(LocalDateTime.of(2025, 2, 7, 12, 0))
+                        .approved(false)
                         .build(),
                 Comment.builder()
                         .id(null)
@@ -81,6 +83,7 @@ public class DatabaseLoader {
                         .userName("Jane Doe")
                         .content("This is a great project!")
                         .createdAt(LocalDateTime.of(2025, 2, 8, 12, 0))
+                        .approved(false)
                         .build()
         );
 

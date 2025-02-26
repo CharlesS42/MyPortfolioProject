@@ -7,12 +7,14 @@ import { ProjectResponseModel } from "../../projects/models/projects.model";
 import { SkillResponseModel } from "../../skills/models/skills.model";
 import { CommentResponseModel, CommentRequestModel } from "../../comments/models/comments.model";
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomeDetails: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { getAllProjects } = useProjectsApi();
   const { getAllSkills } = useSkillsApi();
-  const { getAllComments, addComment } = useCommentsApi();
+  const { getCommentsByApproved, addComment } = useCommentsApi();
 
   const [projects, setProjects] = useState<ProjectResponseModel[]>([]);
   const [skills, setSkills] = useState<SkillResponseModel[]>([]);
@@ -44,7 +46,7 @@ const HomeDetails: React.FC = () => {
 
   const fetchComments = async () => {
     try {
-      const commentsData = await getAllComments();
+      const commentsData = await getCommentsByApproved(true);
       setComments(commentsData);
     } catch (error) {
       console.error(t("home.errors.fetchComments"), error);
@@ -62,11 +64,12 @@ const HomeDetails: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const addedComment = await addComment(newComment);
-      setComments((prevComments) => [...prevComments, addedComment]);
+      await addComment(newComment);
       setNewComment({ userId: "", userName: "", content: "", createdAt: new Date().toISOString() });
+      toast.success(t("home.comments.successMessage"));
     } catch (error) {
       console.error(t("home.errors.addComment"), error);
+      toast.error(t("home.comments.errorMessage"));
     }
   };
 
@@ -78,6 +81,7 @@ const HomeDetails: React.FC = () => {
 
   return (
     <div className="portfolio-container">
+      <ToastContainer />
       <div className="intro-cv-container">
         <section className="intro-section">
           <img src="/assets/my_profile.jpg" alt={t("home.profileAlt", { name: "Charles Séguin" })} className="profile-picture" />

@@ -80,13 +80,52 @@ export const useCommentsApi = () => {
           `${backendUrl}/comments/${commentId}`
       );
     };
-  
-    return {
-      getAllComments,
-      getCommentById,
-      addComment,
-      updateComment,
-      deleteComment,
+
+    const getCommentsByApproved = async (
+      approved: boolean
+    ): Promise<CommentResponseModel[]> => {
+      const comments: CommentResponseModel[] = [];
+
+      const response = await useAxiosInstance.get(
+        `${backendUrl}/comments/get/approved/${approved}`,
+        {
+          responseType: "text",
+          headers: {
+            Accept: "text/event-stream",
+          },
+        }
+      );
+
+      const lines = response.data.split("\n");
+      for (const line of lines) {
+        const trimmedLine = line.trim();
+        if (trimmedLine.startsWith("data:")) {
+          try {
+            const comment = JSON.parse(trimmedLine.substring(5).trim());
+            comments.push(comment);
+          } catch (error) {
+            console.error("Error parsing line:", trimmedLine, error);
+          }
+        }
+      }
+
+      return comments;
     };
+
+    const approveComment = async (commentId: string): Promise<void> => {
+      await useAxiosInstance.patch<void>(
+        `${backendUrl}/comments/approve/${commentId}`
+      );
+    };
+
+  return {
+    getAllComments,
+    getCommentById,
+    addComment,
+    updateComment,
+    deleteComment,
+    getCommentsByApproved,
+    approveComment,
   };
   
+};  

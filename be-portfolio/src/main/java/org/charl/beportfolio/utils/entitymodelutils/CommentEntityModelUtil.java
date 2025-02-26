@@ -26,6 +26,9 @@ public class CommentEntityModelUtil {
         if (comment.getCreatedAt() != null) {
             commentResponseModel.setCreatedAt(comment.getCreatedAt());
         }
+        if (comment.getApproved() != null) {
+            commentResponseModel.setApproved(comment.getApproved());
+        }
 
         return commentResponseModel;
     }
@@ -33,11 +36,12 @@ public class CommentEntityModelUtil {
     // Method to map a CommentRequestModel to a Comment entity
     public static Comment toCommentEntity(CommentRequestModel commentRequestModel) {
         return Comment.builder()
-                .id(generateUUIDString()) // Generate a unique commentId
+                .commentId(generateUUIDString()) // Generate a unique commentId
                 .userId(commentRequestModel.getUserId())
                 .userName(commentRequestModel.getUserName())
                 .content(commentRequestModel.getContent())
                 .createdAt(LocalDateTime.now())
+                .approved(false)
                 .build();
     }
 

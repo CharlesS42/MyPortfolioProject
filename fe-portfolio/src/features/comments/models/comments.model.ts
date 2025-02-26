@@ -4,6 +4,7 @@ export interface CommentResponseModel {
     userName: string;
     content: string;
     createdAt: string;
+    approved: boolean;
 }
 
 export interface CommentRequestModel {

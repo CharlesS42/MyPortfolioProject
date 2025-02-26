@@ -65,4 +65,21 @@ public class CommentServiceImpl implements CommentService {
         return commentRepository.findCommentsByUserId(userId)
                 .map(CommentEntityModelUtil::toCommentResponseModel);
     }
+
+    @Override
+    public Flux<CommentResponseModel> getCommentsByApproved(Boolean approved) {
+        return commentRepository.findCommentsByApproved(approved)
+                .map(CommentEntityModelUtil::toCommentResponseModel);
+    }
+
+    @Override
+    public Mono<Void> approveComment(String commentId) {
+        return commentRepository.findCommentByCommentId(commentId)
+                .switchIfEmpty(Mono.error(new NotFoundException("Comment id not found: " + commentId)))
+                .flatMap(comment -> {
+                    comment.setApproved(!comment.getApproved());    // Switch the approved status
+                    return commentRepository.save(comment);
+                })
+                .then();
+    }
 }

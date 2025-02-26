@@ -6,10 +6,9 @@ import { useTranslation } from 'react-i18next';
 
 const CommentsTab: React.FC = () => {
   const { t } = useTranslation();
-  const { getAllComments, getCommentById, deleteComment } = useCommentsApi();
+  const { getAllComments, getCommentById, deleteComment, approveComment } = useCommentsApi();
   const [comments, setComments] = useState<CommentResponseModel[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [modalType, setModalType] = useState<"create" | "update" | "delete">("create");
   const [selectedComment, setSelectedComment] = useState<CommentResponseModel | null>(null);
   const [viewingComment, setViewingComment] = useState<CommentResponseModel | null>(null);
 
@@ -47,6 +46,15 @@ const CommentsTab: React.FC = () => {
     }
   };
 
+  const handleApprove = async (commentId: string) => {
+    try {
+      await approveComment(commentId);
+      await fetchComments();
+    } catch (error) {
+      console.error(t("comments.errors.approve"), error);
+    }
+  };
+
   return (
     <div>
       {viewingComment ? (
@@ -69,6 +77,7 @@ const CommentsTab: React.FC = () => {
                 <tr>
                   <th>{t("comments.user")}</th>
                   <th>{t("comments.content")}</th>
+                  <th>{t("comments.approved")}</th>
                   <th>{t("comments.actions")}</th>
                 </tr>
               </thead>
@@ -82,13 +91,21 @@ const CommentsTab: React.FC = () => {
                     >
                       {comment.content}
                     </td>
+                    <td>{comment.approved ? t("comments.approvedYes") : t("comments.approvedNo")}</td>
                     <td>
+                      <Button
+                        variant="outline-success"
+                        className="ms-2"
+                        onClick={() => handleApprove(comment.commentId)}
+                        disabled={comment.approved}
+                      >
+                        {comment.approved ? t("comments.disapprove") : t("comments.approve")}
+                      </Button>
                       <Button
                         variant="outline-danger"
                         className="ms-2"
                         onClick={() => {
                           setSelectedComment(comment);
-                          setModalType("delete");
                           setShowModal(true);
                         }}
                       >
@@ -106,21 +123,19 @@ const CommentsTab: React.FC = () => {
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>
-            {modalType === "delete" ? t("comments.modal.deleteTitle") : t("comments.modal.viewTitle")}
+            {t("comments.modal.deleteTitle")}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {modalType === "delete" ? <p>{t("comments.modal.deleteConfirmation")}</p> : null}
+          <p>{t("comments.modal.deleteConfirmation")}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             {t("comments.modal.cancel")}
           </Button>
-          {modalType === "delete" && (
-            <Button variant="danger" onClick={handleDelete}>
-              {t("comments.modal.confirm")}
-            </Button>
-          )}
+          <Button variant="danger" onClick={handleDelete}>
+            {t("comments.modal.confirm")}
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

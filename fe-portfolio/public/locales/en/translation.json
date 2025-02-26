@@ -37,7 +37,9 @@
       "title": "Comments",
       "placeholderName": "Your Name",
       "placeholderComment": "Your Comment",
-      "submit": "Submit"
+      "submit": "Submit",
+      "successMessage": "Your comment has been received and is awaiting approval.",
+      "errorMessage": "There was an error submitting your comment. Please try again."
     },
     "errors": {
       "fetchProjects": "Error fetching projects.",
@@ -86,17 +88,29 @@
     }
   },
   "comments": {
-    "delete": "Delete",
-    "title": "Comments",
     "user": "User",
     "content": "Content",
+    "approved": "Approved",
+    "approvedYes": "Yes",
+    "approvedNo": "No",
     "actions": "Actions",
+    "approve": "Approve",
+    "disapprove": "Disapprove",
+    "delete": "Delete",
     "modal": {
       "deleteTitle": "Delete Comment",
       "deleteConfirmation": "Are you sure you want to delete this comment?",
       "cancel": "Cancel",
       "confirm": "Confirm"
-    }
+    },
+    "errors": {
+      "fetch": "Error fetching comments.",
+      "view": "Error viewing comment.",
+      "delete": "Error deleting comment.",
+      "approve": "Error approving comment."
+    },
+    "backToList": "Back to List",
+    "title": "Comments"
   },
   "messages": {
     "create": "Create Message",
@@ -105,6 +119,7 @@
     "title": "Messages",
     "name": "Name",
     "email": "Email",
+    "subject": "Subject",
     "content": "Content",
     "actions": "Actions",
     "modal": {
@@ -115,5 +130,21 @@
       "confirm": "Confirm",
       "save": "Save"
     }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastNamePlaceholder": "Enter your last name",
+    "emailPlaceholder": "Enter your email",
+    "subjectPlaceholder": "Enter the subject of your message",
+    "messagePlaceholder": "Enter your message",
+    "submit": "Submit",
+    "successMessage": "Your message has been sent successfully.",
+    "errorMessage": "There was an error sending your message. Please try again."
   }
 }
