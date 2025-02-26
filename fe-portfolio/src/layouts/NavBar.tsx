@@ -3,8 +3,11 @@ import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AppRoutes } from "../shared/models/app.routes";
 import "./NavBar.css"; 
+import i18n from '../i18n';
+import { useTranslation } from 'react-i18next';
 
 const NavBar: React.FC = () => {
+  const { t } = useTranslation();
 
   const [, setLoading] = useState(false);
 
@@ -32,6 +35,14 @@ const NavBar: React.FC = () => {
     logout({ logoutParams: { returnTo: window.location.origin } });
   };
 
+  const handleLanguageChange = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('language', lng);
+    console.log('Language changed to:', lng);
+  }
+
+  console.log("Current language:", i18n.language);
+
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
       <Container>
@@ -39,27 +50,45 @@ const NavBar: React.FC = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href={AppRoutes.Home} className="px-3">
-              Home
+              {t('navbar.home')}
             </Nav.Link>
             <Nav.Link href={AppRoutes.ContactUs} className="px-3">
-              Contact Me
+              {t('navbar.contactMe')}
             </Nav.Link>
             <Nav.Link href={AppRoutes.Dashboard} className="px-3">
-              Dashboard
+              {t('navbar.dashboard')}
             </Nav.Link>
+            <NavDropdown
+              title={
+                <img
+                  src="/assets/globe.png"
+                  alt="Language Selector"
+                  style={{ height: "20px" }}
+                />
+              }
+              id="language-dropdown"
+              align="end"
+            >
+              <NavDropdown.Item onClick={() => handleLanguageChange("en")}>
+                English
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => handleLanguageChange("fr")}>
+                Français
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Nav>
             {isLoading ? (
-              <span>Loading...</span>
+              <span>{t('navbar.loading')}</span>
             ) : isAuthenticated ? (
               <NavDropdown title={<img src={user?.picture} alt={user?.name} className="profile-icon" />} id="basic-nav-dropdown">
                 <NavDropdown.ItemText>{user?.name}</NavDropdown.ItemText>
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleLogout}>{t('navbar.logout')}</NavDropdown.Item>
               </NavDropdown>
             ) : (
               <Button variant="primary" onClick={handleLoginRedirect}>
-                Login
+                {t('navbar.login')}
               </Button>
             )}
           </Nav>

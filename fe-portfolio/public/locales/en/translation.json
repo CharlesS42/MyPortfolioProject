@@ -1,18 +1,119 @@
 {
-    "aspiring": "Aspiring Software Engineer",
-    "about me": "Welcome to my portfolio! I am a third year Computer Science student at the Champlain College Saint Lambert. I am passionate about software development and I am always looking for new opportunities to learn and grow. My expertise is in application development and software engineering. I am currently working as an intern at Multidev Technologies Inc. where I am developing a new application for the company. Feel free to check out my projects, skills, and CV below! Please leave a comment if you have any feedback or questions. To contact me, feel free to send me an email through my contact form.",
-    "uploadedAt": "Uploaded at",
-    "loadingCV": "Loading CV...",
-    "projects": "Projects",
-    "technologies": "Technologies:",
-    "repository": "Repository",
-    "liveDemo": "Live Demo",
-    "skills_section_title": "Skills",
-    "skills_proficiency_label": "Proficiency Level:",
-    "skills_category_label": "Category:",
-    "comments_section_title": "Comments",
-    "Home Page": "Home",
-    "Dashboard": "Dashboard"
+  "navbar": {
+    "home": "Home",
+    "contactMe": "Contact Me",
+    "dashboard": "Dashboard",
+    "loading": "Loading...",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "tabs": {
+      "messages": "Messages",
+      "comments": "Comments",
+      "skills": "Skills",
+      "projects": "Projects"
+    }
+  },
+  "home": {
+    "profileAlt": "Profile picture of {{name}}",
+    "name": "Charles Séguin",
+    "title": "Aspiring Software Engineer",
+    "introduction": "Welcome to my portfolio! I am a third-year Computer Science student at the Champlain College Saint Lambert. I am passionate about software development and always looking for new opportunities to learn and grow. My expertise lies in application development and software engineering. I am currently an intern at Multidev Technologies Inc., where I am developing a new application. Feel free to explore my projects, skills, and CV below. Leave a comment or reach out through my contact form!",
+    "downloadCV": "Download CV",
+    "projects": {
+      "title": "Projects",
+      "technologies": "Technologies",
+      "repository": "Repository",
+      "liveDemo": "Live Demo"
+    },
+    "skills": {
+      "title": "Skills",
+      "proficiencyLevel": "Proficiency Level",
+      "category": "Category"
+    },
+    "comments": {
+      "title": "Comments",
+      "placeholderName": "Your Name",
+      "placeholderComment": "Your Comment",
+      "submit": "Submit"
+    },
+    "errors": {
+      "fetchProjects": "Error fetching projects.",
+      "fetchSkills": "Error fetching skills.",
+      "fetchComments": "Error fetching comments.",
+      "addComment": "Error adding comment."
+    }
+  },
+  "projects": {
+    "create": "Create Project",
+    "edit": "Edit",
+    "delete": "Delete",
+    "title": "Projects",
+    "titleHeader": "Title",
+    "programmingLanguages": "Programming Languages",
+    "actions": "Actions",
+    "repositoryUrl": "Repository URL",
+    "liveDemoUrl": "Live Demo URL",
+    "modal": {
+      "createTitle": "Create Project",
+      "updateTitle": "Edit Project",
+      "deleteTitle": "Delete Project",
+      "deleteConfirmation": "Are you sure you want to delete this project?",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "save": "Save"
+    }
+  },
+  "skills": {
+    "create": "Create Skill",
+    "edit": "Edit",
+    "delete": "Delete",
+    "title": "Skills",
+    "name": "Name",
+    "proficiencyLevel": "Proficiency Level",
+    "category": "Category",
+    "actions": "Actions",
+    "modal": {
+      "createTitle": "Create Skill",
+      "updateTitle": "Edit Skill",
+      "deleteTitle": "Delete Skill",
+      "deleteConfirmation": "Are you sure you want to delete this skill?",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "save": "Save"
+    }
+  },
+  "comments": {
+    "delete": "Delete",
+    "title": "Comments",
+    "user": "User",
+    "content": "Content",
+    "actions": "Actions",
+    "modal": {
+      "deleteTitle": "Delete Comment",
+      "deleteConfirmation": "Are you sure you want to delete this comment?",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    }
+  },
+  "messages": {
+    "create": "Create Message",
+    "edit": "Edit",
+    "delete": "Delete",
+    "title": "Messages",
+    "name": "Name",
+    "email": "Email",
+    "content": "Content",
+    "actions": "Actions",
+    "modal": {
+      "createTitle": "Create Message",
+      "deleteTitle": "Delete Message",
+      "deleteConfirmation": "Are you sure you want to delete this message?",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "save": "Save"
+    }
+  }
 }
-    
-  

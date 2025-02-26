@@ -8,16 +8,10 @@ const Footer: React.FC = () => {
       <Container className="d-flex justify-content-between align-items-center py-3">
         <div>© 2025 Charles Séguin's Portfolio. All rights reserved.</div>
         <div className="social-icons">
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/icons/twitter.png" alt="Twitter" />
+          <a href="https://github.com/CharlesS42" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/icons/github.png" alt="GitHub" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/icons/instagram.png" alt="Instagram" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/icons/youtube.png" alt="YouTube" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/charles-s%C3%A9guin-05a9b3327/" target="_blank" rel="noopener noreferrer">
             <img src="/assets/icons/linkedin.png" alt="LinkedIn" />
           </a>
         </div>

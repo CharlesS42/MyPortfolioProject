@@ -4,9 +4,11 @@ import MessagesTab from "./Tabs/MessagesTab";
 import CommentsTab from "./Tabs/CommentsTab";
 import SkillsTab from "./Tabs/SkillsTab";
 import ProjectsTab from "./Tabs/ProjectsTab";
+import { useTranslation } from "react-i18next";
 
 const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState("messages");
+  const { t } = useTranslation();
 
   return (
     <div
@@ -36,7 +38,7 @@ const Dashboard: React.FC = () => {
               >
                 {/* Dashboard Title */}
                 <h4 className="text-center mb-3" style={{ fontWeight: "bold" }}>
-                  Dashboard
+                  {t('dashboard.title')}
                 </h4>
                 {/* Tab List */}
                 <Nav className="flex-column text-center">
@@ -52,7 +54,7 @@ const Dashboard: React.FC = () => {
                         borderRadius: "10px",
                       }}
                     >
-                      Messages
+                      {t('dashboard.tabs.messages')}
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -67,7 +69,7 @@ const Dashboard: React.FC = () => {
                         borderRadius: "10px",
                       }}
                     >
-                      Comments
+                      {t('dashboard.tabs.comments')}
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -82,7 +84,7 @@ const Dashboard: React.FC = () => {
                         borderRadius: "10px",
                       }}
                     >
-                      Skills
+                      {t('dashboard.tabs.skills')}
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -97,7 +99,7 @@ const Dashboard: React.FC = () => {
                         borderRadius: "10px",
                       }}
                     >
-                      Projects
+                      {t('dashboard.tabs.projects')}
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>

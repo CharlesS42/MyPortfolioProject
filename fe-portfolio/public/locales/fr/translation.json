@@ -1,18 +1,119 @@
 {
-    "aspiring": "Aspirant Ingénieur Logiciel",
-    "about me": "Bienvenue sur mon portfolio ! Je suis étudiant en troisième année d'informatique au Champlain College Saint Lambert. Je suis passionné par le développement logiciel et je suis toujours à la recherche de nouvelles opportunités pour apprendre et progresser. Mon expertise porte sur le développement d'applications et l'ingénierie logicielle. Je travaille actuellement comme stagiaire chez Multidev Technologies Inc., où je développe une nouvelle application pour l'entreprise. N'hésitez pas à consulter mes projets, compétences et CV ci-dessous ! Laissez un commentaire si vous avez des retours ou des questions. Pour me contacter, envoyez-moi un e-mail via mon formulaire de contact.",
-    "uploadedAt": "Téléchargé le",
-    "loadingCV": "Chargement du CV...",
-    "projects": "Projets",
-    "technologies": "Technologies :",
-    "repository": "Référentiel",
-    "liveDemo": "Démo en direct",
-    "skills_section_title": "Compétences",
-    "skills_proficiency_label": "Niveau de compétence :",
-    "skills_category_label": "Catégorie :",
-    "comments_section_title": "Commentaires",
-    "Home Page": "Accueil",
-    "Dashboard": "Tableau de bord"
+  "navbar": {
+    "home": "Accueil",
+    "contactMe": "Contactez-moi",
+    "dashboard": "Tableau de bord",
+    "loading": "Chargement...",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "tabs": {
+      "messages": "Messages",
+      "comments": "Commentaires",
+      "skills": "Compétences",
+      "projects": "Projets"
+    }
+  },
+  "home": {
+    "profileAlt": "Photo de profil de {{name}}",
+    "name": "Charles Séguin",
+    "title": "Aspirant ingénieur logiciel",
+    "introduction": "Bienvenue sur mon portfolio ! Je suis étudiant en troisième année d'informatique au Collège Champlain Saint-Lambert. Passionné par le développement logiciel, je suis toujours à la recherche de nouvelles opportunités pour apprendre et évoluer. Mon expertise se situe dans le développement d'applications et l'ingénierie logicielle. Je suis actuellement stagiaire chez Multidev Technologies Inc., où je développe une nouvelle application. N'hésitez pas à explorer mes projets, compétences et mon CV ci-dessous. Laissez un commentaire ou contactez-moi via le formulaire de contact !",
+    "downloadCV": "Télécharger le CV",
+    "projects": {
+      "title": "Projets",
+      "technologies": "Technologies",
+      "repository": "Dépôt",
+      "liveDemo": "Démo en direct"
+    },
+    "skills": {
+      "title": "Compétences",
+      "proficiencyLevel": "Niveau de compétence",
+      "category": "Catégorie"
+    },
+    "comments": {
+      "title": "Commentaires",
+      "placeholderName": "Votre nom",
+      "placeholderComment": "Votre commentaire",
+      "submit": "Soumettre"
+    },
+    "errors": {
+      "fetchProjects": "Erreur lors de la récupération des projets.",
+      "fetchSkills": "Erreur lors de la récupération des compétences.",
+      "fetchComments": "Erreur lors de la récupération des commentaires.",
+      "addComment": "Erreur lors de l'ajout du commentaire."
+    }
+  },
+  "projects": {
+    "create": "Créer un projet",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "title": "Projets",
+    "titleHeader": "Titre",
+    "programmingLanguages": "Langages de programmation",
+    "actions": "Actions",
+    "repositoryUrl": "URL du dépôt",
+    "liveDemoUrl": "URL de la démo en direct",
+    "modal": {
+      "createTitle": "Créer un projet",
+      "updateTitle": "Modifier le projet",
+      "deleteTitle": "Supprimer le projet",
+      "deleteConfirmation": "Êtes-vous sûr de vouloir supprimer ce projet ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer",
+      "save": "Enregistrer"
+    }
+  },
+  "skills": {
+    "create": "Créer une compétence",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "title": "Compétences",
+    "name": "Nom",
+    "proficiencyLevel": "Niveau de compétence",
+    "category": "Catégorie",
+    "actions": "Actions",
+    "modal": {
+      "createTitle": "Créer une compétence",
+      "updateTitle": "Modifier la compétence",
+      "deleteTitle": "Supprimer la compétence",
+      "deleteConfirmation": "Êtes-vous sûr de vouloir supprimer cette compétence ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer",
+      "save": "Enregistrer"
+    }
+  },
+  "comments": {
+    "delete": "Supprimer",
+    "title": "Commentaires",
+    "user": "Utilisateur",
+    "content": "Contenu",
+    "actions": "Actions",
+    "modal": {
+      "deleteTitle": "Supprimer le commentaire",
+      "deleteConfirmation": "Êtes-vous sûr de vouloir supprimer ce commentaire ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    }
+  },
+  "messages": {
+    "create": "Créer un message",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "title": "Messages",
+    "name": "Nom",
+    "email": "Email",
+    "content": "Contenu",
+    "actions": "Actions",
+    "modal": {
+      "createTitle": "Créer un message",
+      "deleteTitle": "Supprimer le message",
+      "deleteConfirmation": "Êtes-vous sûr de vouloir supprimer ce message ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer",
+      "save": "Enregistrer"
+    }
+  }
 }
-
-  
