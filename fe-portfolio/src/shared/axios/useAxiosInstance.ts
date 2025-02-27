@@ -84,7 +84,6 @@ export const useAxiosInstance = (): AxiosInstance => {
   instance.interceptors.request.use(async config => {
     try {
       const token = await getAccessTokenSilently();
-      console.log('Token:', token);
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       } else {

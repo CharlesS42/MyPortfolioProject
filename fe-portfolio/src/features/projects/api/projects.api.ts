@@ -8,8 +8,6 @@ export const useProjectsApi = () => {
     const axiosInstance = useAxiosInstance();
   
     const getAllProjects = async (): Promise<ProjectResponseModel[]> => {
-      console.log(localStorage.getItem('access_token'));
-      
       const projects: ProjectResponseModel[] = [];
       const response = await axiosInstance.get(`/projects/get`, {
         responseType: "text",
