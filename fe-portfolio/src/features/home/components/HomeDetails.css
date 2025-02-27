@@ -83,10 +83,6 @@ h2 {
   transition: transform 0.2s ease-in-out;
 }
 
-.card:hover {
-  transform: scale(1.03);
-}
-
 /* Comments Section */
 .comments-container {
   display: flex;
@@ -173,10 +169,5 @@ h2 {
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer; /* Indicates it's clickable */
-  transition: transform 0.2s ease-in-out;
+  padding-bottom: 10px;
 }
-
-.project-image:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-}
-
