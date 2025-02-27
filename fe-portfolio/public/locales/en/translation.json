@@ -146,5 +146,20 @@
     "submit": "Submit",
     "successMessage": "Your message has been sent successfully.",
     "errorMessage": "There was an error sending your message. Please try again."
+  },
+  "proficiency": {
+    "BEGINNER": "Beginner",
+    "INTERMEDIATE": "Intermediate",
+    "ADVANCED": "Advanced",
+    "EXPERT": "Expert"
+  },
+  "skillCategory": {
+    "PROGRAMMING_LANGUAGE": "Programming Language",
+    "TOOL": "Tool",
+    "DATABASE": "Database",
+    "FRAMEWORK": "Framework",
+    "DEVOPS": "DevOps",
+    "TESTING": "Testing",
+    "OTHER": "Other"
   }
 }

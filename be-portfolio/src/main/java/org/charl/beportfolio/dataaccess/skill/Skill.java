@@ -17,7 +17,7 @@ public class Skill {
 
     private String skillId;
     private String name;
-    private String proficiencyLevel;
-    private String category;
+    private Proficiency proficiencyLevel;
+    private SkillCategory category;
 }
 

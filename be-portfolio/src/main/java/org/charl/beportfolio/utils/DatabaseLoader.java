@@ -11,7 +11,9 @@ import org.charl.beportfolio.dataaccess.cv.CV;
 import org.charl.beportfolio.dataaccess.cv.CVRepository;
 import org.charl.beportfolio.dataaccess.project.Project;
 import org.charl.beportfolio.dataaccess.project.ProjectRepository;
+import org.charl.beportfolio.dataaccess.skill.Proficiency;
 import org.charl.beportfolio.dataaccess.skill.Skill;
+import org.charl.beportfolio.dataaccess.skill.SkillCategory;
 import org.charl.beportfolio.dataaccess.skill.SkillRepository;
 import org.charl.beportfolio.dataaccess.user.User;
 import org.charl.beportfolio.dataaccess.user.UserRepository;
@@ -104,24 +106,52 @@ public class DatabaseLoader {
         List<Skill> sampleSkills = List.of(
                 Skill.builder()
                         .id(null)
+                        .skillId("6c3eab8a-e728-11ef-8028-325096b39f47")
+                        .name("Delphi")
+                        .proficiencyLevel(Proficiency.ADVANCED)
+                        .category(SkillCategory.PROGRAMMING_LANGUAGE)
+                        .build(),
+                Skill.builder()
+                        .id(null)
                         .skillId("0ed6c33a-e708-11ef-9d1c-325096b39f47")
+                        .name("GitHub")
+                        .proficiencyLevel(Proficiency.ADVANCED)
+                        .category(SkillCategory.TOOL)
+                        .build(),
+                Skill.builder()
+                        .id(null)
+                        .skillId("185cd124-e708-11ef-9d03-325096b39f48")
                         .name("Java")
-                        .proficiencyLevel("Intermediate")
-                        .category("Programming Language")
+                        .proficiencyLevel(Proficiency.INTERMEDIATE)
+                        .category(SkillCategory.PROGRAMMING_LANGUAGE)
+                        .build(),
+                Skill.builder()
+                        .id(null)
+                        .skillId("185cd124-e708-11ef-9d03-325096b39f49")
+                        .name("C#")
+                        .proficiencyLevel(Proficiency.INTERMEDIATE)
+                        .category(SkillCategory.PROGRAMMING_LANGUAGE)
+                        .build(),
+                Skill.builder()
+                        .id(null)
+                        .skillId("29541870-e708-11ef-a423-325096b39f48")
+                        .name("MySQL")
+                        .proficiencyLevel(Proficiency.INTERMEDIATE)
+                        .category(SkillCategory.DATABASE)
                         .build(),
                 Skill.builder()
                         .id(null)
                         .skillId("185cd124-e708-11ef-9d03-325096b39f47")
                         .name("Python")
-                        .proficiencyLevel("Intermediate")
-                        .category("Programming Language")
+                        .proficiencyLevel(Proficiency.INTERMEDIATE)
+                        .category(SkillCategory.PROGRAMMING_LANGUAGE)
                         .build(),
                 Skill.builder()
                         .id(null)
                         .skillId("29541870-e708-11ef-a423-325096b39f47")
                         .name("JavaScript")
-                        .proficiencyLevel("Intermediate")
-                        .category("Programming Language")
+                        .proficiencyLevel(Proficiency.BEGINNER)
+                        .category(SkillCategory.PROGRAMMING_LANGUAGE)
                         .build()
         );
 

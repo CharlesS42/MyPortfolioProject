@@ -7,11 +7,13 @@ import UnauthorizedPage from './pages/errors/UnauthorizedPage';
 import NotFoundPage from './pages/errors/NotFoundPage';
 import CallbackPage from './pages/CallbackPage';
 import ContactUsPage from "./pages/ContactUsPage";
+/*
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from 'react';
 import { useUsersApi } from './features/users/api/users.api';
 import { UserResponseModel } from './features/users/models/users.model';
-
+*/
+/*
 const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
   const { isAuthenticated, getAccessTokenSilently, isLoading } = useAuth0();
   const { getUserById } = useUsersApi();
@@ -49,6 +51,7 @@ const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
 
   return isAuthenticated ? element : <Navigate to={AppRoutes.Home} />;
 };
+*/
 
 const router = createBrowserRouter([
   {
@@ -61,7 +64,7 @@ const router = createBrowserRouter([
       {
         path: AppRoutes.Dashboard,
         element: (
-          <ProtectedRoute element={<DashboardPage />} />
+          <DashboardPage />
         ),
       },
       {

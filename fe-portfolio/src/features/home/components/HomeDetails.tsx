@@ -93,11 +93,11 @@ const HomeDetails: React.FC = () => {
         </section>
         <section className="cv-section">
           {i18n.language === "fr" ? (
-            <a href="/Charles_Seguin_Master_Resume_french.pdf" download className="cv-link">
+            <a href="/Charles_Seguin_CV_francais.pdf" download className="cv-link">
               {t("home.downloadCV")}
             </a>
           ) : (
-            <a href="/Charles_Seguin_Master_Resume_english.pdf" download className="cv-link">
+            <a href="/Charles_Seguin_Resume_english.pdf" download className="cv-link">
               {t("home.downloadCV")}
             </a>
           )}
@@ -113,8 +113,12 @@ const HomeDetails: React.FC = () => {
               <p>{project.description}</p>
               <p><strong>{t("home.projects.technologies")}:</strong> {project.programmingLanguages.join(", ")}</p>
               <p><small>{new Date(project.date).toLocaleDateString()}</small></p>
-              <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">{t("home.projects.repository")}</a>
-              <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer">{t("home.projects.liveDemo")}</a>
+              {project.repositoryUrl !== "" &&
+                <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">{t("home.projects.repository")}</a>
+              }
+              {project.liveDemoUrl !== "" &&
+                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer">{t("home.projects.liveDemo")}</a>
+              }
             </div>
           ))}
         </div>
@@ -127,8 +131,8 @@ const HomeDetails: React.FC = () => {
             {skills.map((skill) => (
               <div key={skill.skillId} className="card">
                 <h3>{skill.name}</h3>
-                <p>{t("home.skills.proficiencyLevel")}: {skill.proficiencyLevel}</p>
-                <p>{t("home.skills.category")}: {skill.category}</p>
+                <p>{t("home.skills.proficiencyLevel")}: {t(`proficiency.${skill.proficiencyLevel}`)}</p>
+                <p>{t("home.skills.category")}: {t(`skillCategory.${skill.category}`)}</p>
               </div>
             ))}
           </div>

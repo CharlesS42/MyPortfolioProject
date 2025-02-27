@@ -116,7 +116,7 @@ const NavBar: React.FC = () => {
                 align="end"
               >
                 <NavDropdown.Item onClick={handleLogout}>
-                  Log out
+                  {t("navbar.login")}
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -126,7 +126,7 @@ const NavBar: React.FC = () => {
                   variant="outline-dark"
                   className="me-2"
                 >
-                  {t("signIn")}
+                  {t("navbar.logout")}
                 </Button>
               </>
             )}

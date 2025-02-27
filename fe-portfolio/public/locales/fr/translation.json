@@ -146,5 +146,20 @@
     "submit": "Soumettre",
     "successMessage": "Votre message a été envoyé avec succès.",
     "errorMessage": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+  },
+  "proficiency": {
+    "BEGINNER": "Débutant",
+    "INTERMEDIATE": "Intermédiaire",
+    "ADVANCED": "Avancé",
+    "EXPERT": "Expert"
+  },
+  "skillCategory": {
+    "PROGRAMMING_LANGUAGE": "Langage de programmation",
+    "TOOL": "Outil",
+    "DATABASE": "Base de données",
+    "FRAMEWORK": "Framework",
+    "DEVOPS": "DevOps",
+    "TESTING": "Test",
+    "OTHER": "Autre"
   }
 }

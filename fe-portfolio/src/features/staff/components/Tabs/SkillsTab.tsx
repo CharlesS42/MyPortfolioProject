@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table, Modal, Form } from "react-bootstrap";
 import { useSkillsApi } from "../../../skills/api/skills.api";
-import { SkillResponseModel, SkillRequestModel } from "../../../skills/models/skills.model";
+import { SkillResponseModel, SkillRequestModel, Proficiency, SkillCategory } from "../../../skills/models/skills.model";
 import { useTranslation } from 'react-i18next';
 
 const SkillsTab: React.FC = () => {
@@ -11,7 +11,7 @@ const SkillsTab: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<"create" | "update" | "delete">("create");
   const [selectedSkill, setSelectedSkill] = useState<SkillResponseModel | null>(null);
-  const [formData, setFormData] = useState<SkillRequestModel>({ name: "", proficiencyLevel: "", category: "" });
+  const [formData, setFormData] = useState<SkillRequestModel>({ name: "", proficiencyLevel: Proficiency.Beginner, category: SkillCategory.programmingLanguage });
   const [viewingSkill, setViewingSkill] = useState<SkillResponseModel | null>(null);
 
   useEffect(() => {
@@ -70,8 +70,8 @@ const SkillsTab: React.FC = () => {
             <span>&larr;</span> {t("skills.backToList")}
           </Button>
           <h3>{viewingSkill.name}</h3>
-          <p><strong>{t("skills.proficiencyLevel")}:</strong> {viewingSkill.proficiencyLevel}</p>
-          <p><strong>{t("skills.category")}:</strong> {viewingSkill.category}</p>
+          <p><strong>{t("skills.proficiencyLevel")}:</strong> {t(`proficiency.${viewingSkill.proficiencyLevel}`)}</p>
+          <p><strong>{t("skills.category")}:</strong> {t(`skillCategory.${viewingSkill.category}`)}</p>
         </div>
       ) : (
         <>
@@ -81,7 +81,7 @@ const SkillsTab: React.FC = () => {
               variant="primary"
               onClick={() => {
                 setModalType("create");
-                setFormData({ name: "", proficiencyLevel: "", category: "" });
+                setFormData({ name: "", proficiencyLevel: Proficiency.Beginner, category: SkillCategory.programmingLanguage });
                 setShowModal(true);
               }}
             >
@@ -107,8 +107,8 @@ const SkillsTab: React.FC = () => {
                     >
                       {skill.name}
                     </td>
-                    <td>{skill.proficiencyLevel}</td>
-                    <td>{skill.category}</td>
+                    <td>{t(`proficiency.${skill.proficiencyLevel}`)}</td>
+                    <td>{t(`skillCategory.${skill.category}`)}</td>
                     <td>
                       <Button
                         variant="outline-primary"
@@ -172,20 +172,30 @@ const SkillsTab: React.FC = () => {
               <Form.Group className="mb-3">
                 <Form.Label>{t("skills.proficiencyLevel")}</Form.Label>
                 <Form.Control
-                  type="text"
+                  as="select"
                   value={formData.proficiencyLevel}
-                  onChange={(e) => setFormData({ ...formData, proficiencyLevel: e.target.value })}
-                  placeholder={t("skills.placeholders.proficiencyLevel")}
-                />
+                  onChange={(e) => setFormData({ ...formData, proficiencyLevel: e.target.value as Proficiency })}
+                >
+                  {Object.values(Proficiency).map((level) => (
+                    <option key={level} value={level}>
+                      {t(`proficiency.${level}`)}
+                    </option>
+                  ))}
+                </Form.Control>
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>{t("skills.category")}</Form.Label>
                 <Form.Control
-                  type="text"
+                  as="select"
                   value={formData.category}
-                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  placeholder={t("skills.placeholders.category")}
-                />
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value as SkillCategory })}
+                >
+                  {Object.values(SkillCategory).map((category) => (
+                    <option key={category} value={category}>
+                      {t(`skillCategory.${category}`)}
+                    </option>
+                  ))}
+                </Form.Control>
               </Form.Group>
             </Form>
           )}
