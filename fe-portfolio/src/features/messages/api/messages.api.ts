@@ -38,7 +38,7 @@ export const useMessagesApi = () => {
         messageId: string
     ): Promise<MessageResponseModel> => {
       const response = await axiosInstance.get<MessageResponseModel>(
-          `/messages/${messageId}/get`
+          `/messages/${messageId}`
       );
       return response.data;
     };

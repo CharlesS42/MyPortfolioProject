@@ -160,3 +160,23 @@ h2 {
 .comment-form button:hover {
   background: #0056b3;
 }
+
+/* Pre-wrap class to preserve whitespace and line breaks */
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Adjust size as needed */
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer; /* Indicates it's clickable */
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-image:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+

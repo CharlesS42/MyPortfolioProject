@@ -3,6 +3,7 @@ import { Button, Table, Modal, Form } from "react-bootstrap";
 import { useProjectsApi } from "../../../projects/api/projects.api";
 import { ProjectResponseModel, ProjectRequestModel } from "../../../projects/models/projects.model";
 import { useTranslation } from 'react-i18next';
+import './ProjectsTab.css'; // Import the CSS file
 
 const ProjectsTab: React.FC = () => {
   const { t } = useTranslation();
@@ -13,7 +14,9 @@ const ProjectsTab: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectResponseModel | null>(null);
   const [formData, setFormData] = useState<ProjectRequestModel>({
     title: "",
-    description: "",
+    imageFileName: "",
+    description_EN: "",
+    description_FR: "",
     programmingLanguages: [],
     date: "",
     repositoryUrl: "",
@@ -45,10 +48,11 @@ const ProjectsTab: React.FC = () => {
 
   const handleSave = async () => {
     try {
+      const updatedFormData = { ...formData, date: new Date().toISOString() };
       if (modalType === "create") {
-        await addProject(formData);
+        await addProject(updatedFormData);
       } else if (modalType === "update" && selectedProject) {
-        await updateProject(formData, selectedProject.projectId);
+        await updateProject(updatedFormData, selectedProject.projectId);
       }
       setShowModal(false);
       await fetchProjects();
@@ -69,19 +73,50 @@ const ProjectsTab: React.FC = () => {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleProgrammingLanguagesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      programmingLanguages: value.split(",").map((lang) => lang.trim()),
+    }));
+  };
+
   return (
     <div>
       {viewingProject ? (
-        <div>
+        <div className="project-details-container">
           <Button variant="link" className="text-primary mb-3" onClick={() => setViewingProject(null)}>
             <span>&larr;</span> {t("projects.backToList")}
           </Button>
           <h3>{viewingProject.title}</h3>
-          <p><strong>{t("projects.description")}:</strong> {viewingProject.description}</p>
+          <p><strong>{t("projects.description_EN")}:</strong></p>
+          <p className="pre-wrap">{viewingProject.description_EN}</p>
+          <p><strong>{t("projects.description_FR")}:</strong></p>
+          <p className="pre-wrap">{viewingProject.description_FR}</p>
           <p><strong>{t("projects.programmingLanguages")}:</strong> {viewingProject.programmingLanguages.join(", ")}</p>
           <p><strong>{t("projects.date")}:</strong> {viewingProject.date}</p>
-          <p><strong>{t("projects.repositoryUrl")}:</strong> <a href={viewingProject.repositoryUrl} target="_blank" rel="noopener noreferrer">{viewingProject.repositoryUrl}</a></p>
-          <p><strong>{t("projects.liveDemoUrl")}:</strong> <a href={viewingProject.liveDemoUrl} target="_blank" rel="noopener noreferrer">{viewingProject.liveDemoUrl}</a></p>
+          <p><strong>{t("projects.repositoryUrl")}: </strong>
+          {viewingProject.repositoryUrl !== "" ? (
+            <a href={viewingProject.repositoryUrl} target="_blank" rel="noopener noreferrer">{viewingProject.repositoryUrl}</a>
+          ) : (
+            t("none")
+          )}
+          </p>
+          <p><strong>{t("projects.liveDemoUrl")}: </strong>
+          {viewingProject.liveDemoUrl !== "" ? (
+            <a href={viewingProject.liveDemoUrl} target="_blank" rel="noopener noreferrer">{viewingProject.liveDemoUrl}</a>
+          ) : (
+            t("none")
+          )}
+          </p>
         </div>
       ) : (
         <>
@@ -91,7 +126,7 @@ const ProjectsTab: React.FC = () => {
               variant="primary"
               onClick={() => {
                 setModalType("create");
-                setFormData({ title: "", description: "", programmingLanguages: [], date: "", repositoryUrl: "", liveDemoUrl: "" });
+                setFormData({ title: "", imageFileName: "", description_EN: "", description_FR: "", programmingLanguages: [], date: "", repositoryUrl: "", liveDemoUrl: "" });
                 setShowModal(true);
               }}
             >
@@ -122,7 +157,9 @@ const ProjectsTab: React.FC = () => {
                           setModalType("update");
                           setFormData({
                             title: project.title,
-                            description: project.description,
+                            imageFileName: project.imageFileName,
+                            description_EN: project.description_EN,
+                            description_FR: project.description_FR,
                             programmingLanguages: project.programmingLanguages,
                             date: project.date,
                             repositoryUrl: project.repositoryUrl,
@@ -172,18 +209,62 @@ const ProjectsTab: React.FC = () => {
                 <Form.Label>{t("projects.title")}</Form.Label>
                 <Form.Control
                   type="text"
+                  name="title"
                   value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  onChange={handleInputChange}
                   placeholder={t("projects.placeholders.title")}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>{t("projects.description")}</Form.Label>
+                <Form.Label>{t("projects.description_EN")}</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="description_EN"
+                  value={formData.description_EN}
+                  onChange={handleInputChange}
+                  placeholder={t("projects.placeholders.description_EN")}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>{t("projects.description_FR")}</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="description_FR"
+                  value={formData.description_FR}
+                  onChange={handleInputChange}
+                  placeholder={t("projects.placeholders.description_FR")}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>{t("projects.programmingLanguages")}</Form.Label>
                 <Form.Control
                   type="text"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder={t("projects.placeholders.description")}
+                  name="programmingLanguages"
+                  value={formData.programmingLanguages.join(", ")}
+                  onChange={handleProgrammingLanguagesChange}
+                  placeholder={t("projects.placeholders.programmingLanguages")}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>{t("projects.repositoryUrl")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="repositoryUrl"
+                  value={formData.repositoryUrl}
+                  onChange={handleInputChange}
+                  placeholder={t("projects.placeholders.repositoryUrl")}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>{t("projects.liveDemoUrl")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="liveDemoUrl"
+                  value={formData.liveDemoUrl}
+                  onChange={handleInputChange}
+                  placeholder={t("projects.placeholders.liveDemoUrl")}
                 />
               </Form.Group>
             </Form>

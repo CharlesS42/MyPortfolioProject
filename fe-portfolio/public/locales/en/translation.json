@@ -19,14 +19,16 @@
   "home": {
     "profileAlt": "Profile picture of {{name}}",
     "name": "Charles Séguin",
-    "title": "Aspiring Software Engineer",
-    "introduction": "Welcome to my portfolio! I am a third-year Computer Science student at the Champlain College Saint Lambert. I am passionate about software development and always looking for new opportunities to learn and grow. My expertise lies in application development and software engineering. I am currently an intern at Multidev Technologies Inc., where I am developing a new application. Feel free to explore my projects, skills, and CV below. Leave a comment or reach out through my contact form!",
+    "title": "Programmer Analyst",
+    "introduction": "Welcome to my portfolio! I am a third-year Computer Science student at the Champlain College Saint Lambert. I am passionate about software development and always looking for new opportunities to learn and grow. My expertise lies in application development and software engineering. I am currently an intern at Multidev Technologies Inc., where I am developing a new application. Feel free to explore my projects and skills below. Leave a comment or reach out through my contact form!",
     "downloadCV": "Download CV",
     "projects": {
       "title": "Projects",
       "technologies": "Technologies",
       "repository": "Repository",
-      "liveDemo": "Live Demo"
+      "liveDemo": "Live Demo",
+      "description_EN": "Description (English)",
+      "description_FR": "Description (French)"
     },
     "skills": {
       "title": "Skills",
@@ -58,6 +60,10 @@
     "actions": "Actions",
     "repositoryUrl": "Repository URL",
     "liveDemoUrl": "Live Demo URL",
+    "description_EN": "Description (English)",
+    "description_FR": "Description (French)",
+    "date": "Date",
+    "backToList": "Back to List",
     "modal": {
       "createTitle": "Create Project",
       "updateTitle": "Edit Project",
@@ -66,6 +72,20 @@
       "cancel": "Cancel",
       "confirm": "Confirm",
       "save": "Save"
+    },
+    "placeholders": {
+      "title": "Enter project title",
+      "description_EN": "Enter project description in English",
+      "description_FR": "Enter project description in French",
+      "programmingLanguages": "Enter programming languages, separated by commas",
+      "repositoryUrl": "Enter repository URL",
+      "liveDemoUrl": "Enter live demo URL"
+    },
+    "errors": {
+      "fetch": "Error fetching projects.",
+      "view": "Error viewing project.",
+      "save": "Error saving project.",
+      "delete": "Error deleting project."
     }
   },
   "skills": {
@@ -77,6 +97,7 @@
     "proficiencyLevel": "Proficiency Level",
     "category": "Category",
     "actions": "Actions",
+    "backToList": "Back to List",
     "modal": {
       "createTitle": "Create Skill",
       "updateTitle": "Edit Skill",
@@ -85,11 +106,17 @@
       "cancel": "Cancel",
       "confirm": "Confirm",
       "save": "Save"
+    },
+    "placeholders": {
+      "name": "Enter the name of the skill",
+      "proficiencyLevel": "Select the proficiency level of the skill",
+      "category": "Select the category of the skill"
     }
   },
   "comments": {
     "user": "User",
     "content": "Content",
+    "createdAt": "Created At",
     "approved": "Approved",
     "approvedYes": "Yes",
     "approvedNo": "No",
@@ -122,6 +149,8 @@
     "subject": "Subject",
     "content": "Content",
     "actions": "Actions",
+    "backToList": "Back to List",
+    "sentAt": "Sent At",
     "modal": {
       "createTitle": "Create Message",
       "deleteTitle": "Delete Message",
@@ -161,5 +190,8 @@
     "DEVOPS": "DevOps",
     "TESTING": "Testing",
     "OTHER": "Other"
-  }
+  },
+  "none": "None",
+  "copyright": "© 2025 Charles Séguin's Portfolio. All rights reserved.",
+  "current": "Current Project!"
 }

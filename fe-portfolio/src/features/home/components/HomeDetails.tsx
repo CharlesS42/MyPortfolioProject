@@ -105,24 +105,49 @@ const HomeDetails: React.FC = () => {
       </div>
 
       <section className="portfolio-section" id="projects">
-        <h2>{t("home.projects.title")}</h2>
-        <div className="grid-container">
-          {projects.map((project) => (
-            <div key={project.projectId} className="card">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <p><strong>{t("home.projects.technologies")}:</strong> {project.programmingLanguages.join(", ")}</p>
-              <p><small>{new Date(project.date).toLocaleDateString()}</small></p>
-              {project.repositoryUrl !== "" &&
-                <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">{t("home.projects.repository")}</a>
-              }
-              {project.liveDemoUrl !== "" &&
-                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer">{t("home.projects.liveDemo")}</a>
-              }
-            </div>
-          ))}
-        </div>
-      </section>
+      <h2>{t("home.projects.title")}</h2>
+      <div className="grid-container">
+        {projects.map((project) => (
+          <div key={project.projectId} className="card">
+            {/* Small Image with Click Event for Enlarged View */}
+            <a href={`/assets/projects/${project.imageFileName}`} target="_blank" rel="noopener noreferrer">
+              <img 
+                src={`/assets/projects/${project.imageFileName.replace(".png", "_small.png")}`} 
+                alt={project.title} 
+                className="project-image"
+              />
+            </a>
+
+            <h3>{project.title}</h3>
+            {localStorage.getItem("language") === "fr" ? (
+              <p className="pre-wrap">{project.description_FR}</p>
+            ) : (
+              <p className="pre-wrap">{project.description_EN}</p>
+            )}
+            <p><strong>{t("home.projects.technologies")}:</strong> {project.programmingLanguages.join(", ")}</p>
+            <p><small>{new Date(project.date).toLocaleDateString()}</small></p>
+            
+            {project.repositoryUrl !== "" && (
+              <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">
+                {t("home.projects.repository")}
+              </a>
+            )}
+
+            {project.liveDemoUrl !== "" && (
+              project.liveDemoUrl === "here" ? (
+                <p>{t('current')}</p>
+              ) : (
+                <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer">
+                  {t("home.projects.liveDemo")}
+                </a>
+              )
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+
 
       <div className="skills-comments-container">
         <section className="portfolio-section" id="skills">

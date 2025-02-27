@@ -45,7 +45,8 @@ public class ProjectServiceImpl implements ProjectService {
                 .switchIfEmpty(Mono.error(new NotFoundException("Project id not found: " + projectId)))
                 .flatMap(foundProject -> {
                     foundProject.setTitle(projectRequestModel.getTitle());
-                    foundProject.setDescription(projectRequestModel.getDescription());
+                    foundProject.setDescription_EN(projectRequestModel.getDescription_EN());
+                    foundProject.setDescription_FR(projectRequestModel.getDescription_FR());
                     foundProject.setProgrammingLanguages(projectRequestModel.getProgrammingLanguages());
                     foundProject.setDate(projectRequestModel.getDate());
                     foundProject.setRepositoryUrl(projectRequestModel.getRepositoryUrl());

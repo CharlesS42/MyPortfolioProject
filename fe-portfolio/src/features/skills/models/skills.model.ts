@@ -1,18 +1,18 @@
 export enum Proficiency {
-    Beginner = "Beginner",
-    Intermediate = "Intermediate",
-    Advanced = "Advanced",
-    Expert = "Expert",
+    Beginner = "BEGINNER",
+    Intermediate = "INTERMEDIATE",
+    Advanced = "ADVANCED",
+    Expert = "EXPERT",
 }
 
 export enum SkillCategory {
-    programmingLanguage = "Programming Language",
-    tool = "Tool",
-    database = "Database",
-    framework = "Framework",
-    devops = "DevOps",
-    testing = "Testing",
-    other = "Other",
+    programmingLanguage = "PROGRAMMING_LANGUAGE",
+    tool = "TOOL",
+    database = "DATABASE",
+    framework = "FRAMEWORK",
+    devops = "DEVOPS",
+    testing = "TESTING",
+    other = "OTHER",
 }
 
 export interface SkillResponseModel {

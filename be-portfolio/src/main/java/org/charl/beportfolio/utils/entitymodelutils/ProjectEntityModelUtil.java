@@ -18,8 +18,14 @@ public class ProjectEntityModelUtil {
         if (project.getTitle() != null) {
             projectResponseModel.setTitle(project.getTitle());
         }
-        if (project.getDescription() != null) {
-            projectResponseModel.setDescription(project.getDescription());
+        if (project.getImageFileName() != null) {
+            projectResponseModel.setImageFileName(project.getImageFileName());
+        }
+        if (project.getDescription_EN() != null) {
+            projectResponseModel.setDescription_EN(project.getDescription_EN());
+        }
+        if (project.getDescription_FR() != null) {
+            projectResponseModel.setDescription_FR(project.getDescription_FR());
         }
         if (project.getProgrammingLanguages() != null) {
             projectResponseModel.setProgrammingLanguages(project.getProgrammingLanguages());
@@ -42,7 +48,9 @@ public class ProjectEntityModelUtil {
         return Project.builder()
                 .projectId(generateUUIDString()) // Generate a unique projectId
                 .title(projectRequestModel.getTitle())
-                .description(projectRequestModel.getDescription())
+                .imageFileName(projectRequestModel.getImageFileName())
+                .description_EN(projectRequestModel.getDescription_EN())
+                .description_FR(projectRequestModel.getDescription_FR())
                 .programmingLanguages(projectRequestModel.getProgrammingLanguages())
                 .date(projectRequestModel.getDate())
                 .repositoryUrl(projectRequestModel.getRepositoryUrl())

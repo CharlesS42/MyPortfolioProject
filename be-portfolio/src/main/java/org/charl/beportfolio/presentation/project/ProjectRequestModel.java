@@ -14,7 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ProjectRequestModel {
     private String title;
-    private String description;
+    private String imageFileName;
+    private String description_EN;
+    private String description_FR;
     private List<String> programmingLanguages;
     private LocalDate date;
     private String repositoryUrl;

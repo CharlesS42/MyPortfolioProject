@@ -19,14 +19,16 @@
   "home": {
     "profileAlt": "Photo de profil de {{name}}",
     "name": "Charles Séguin",
-    "title": "Aspirant ingénieur logiciel",
-    "introduction": "Bienvenue sur mon portfolio ! Je suis étudiant en troisième année d'informatique au Collège Champlain Saint-Lambert. Passionné par le développement logiciel, je suis toujours à la recherche de nouvelles opportunités pour apprendre et évoluer. Mon expertise se situe dans le développement d'applications et l'ingénierie logicielle. Je suis actuellement stagiaire chez Multidev Technologies Inc., où je développe une nouvelle application. N'hésitez pas à explorer mes projets, compétences et mon CV ci-dessous. Laissez un commentaire ou contactez-moi via le formulaire de contact !",
+    "title": "Programmeur Analyste",
+    "introduction": "Bienvenue sur mon portfolio ! Je suis étudiant en troisième année d'informatique au Collège Champlain Saint-Lambert. Passionné par le développement logiciel, je suis toujours à la recherche de nouvelles opportunités pour apprendre et évoluer. Mon expertise se situe dans le développement d'applications et l'ingénierie logicielle. Je suis actuellement stagiaire chez Multidev Technologies Inc., où je développe une nouvelle application. N'hésitez pas à explorer mes projets et mes compétences ci-dessous. Laissez un commentaire ou contactez-moi via le formulaire de contact !",
     "downloadCV": "Télécharger le CV",
     "projects": {
       "title": "Projets",
       "technologies": "Technologies",
       "repository": "Dépôt",
-      "liveDemo": "Démo en direct"
+      "liveDemo": "Démo en direct",
+      "description_EN": "Description (anglais)",
+      "description_FR": "Description (français)"
     },
     "skills": {
       "title": "Compétences",
@@ -58,6 +60,10 @@
     "actions": "Actions",
     "repositoryUrl": "URL du dépôt",
     "liveDemoUrl": "URL de la démo en direct",
+    "description_EN": "Description (anglais)",
+    "description_FR": "Description (français)",
+    "date": "Date",
+    "backToList": "Retour à la liste",
     "modal": {
       "createTitle": "Créer un projet",
       "updateTitle": "Modifier le projet",
@@ -66,6 +72,20 @@
       "cancel": "Annuler",
       "confirm": "Confirmer",
       "save": "Enregistrer"
+    },
+    "placeholders": {
+      "title": "Entrez le titre du projet",
+      "description_EN": "Entrez la description du projet en anglais",
+      "description_FR": "Entrez la description du projet en français",
+      "programmingLanguages": "Entrez les langages de programmation, séparés par des virgules",
+      "repositoryUrl": "Entrez l'URL du dépôt",
+      "liveDemoUrl": "Entrez l'URL de la démo en direct"
+    },
+    "errors": {
+      "fetch": "Erreur lors de la récupération des projets.",
+      "view": "Erreur lors de la visualisation du projet.",
+      "save": "Erreur lors de l'enregistrement du projet.",
+      "delete": "Erreur lors de la suppression du projet."
     }
   },
   "skills": {
@@ -77,6 +97,7 @@
     "proficiencyLevel": "Niveau de compétence",
     "category": "Catégorie",
     "actions": "Actions",
+    "backToList": "Retour à la liste",
     "modal": {
       "createTitle": "Créer une compétence",
       "updateTitle": "Modifier la compétence",
@@ -85,11 +106,17 @@
       "cancel": "Annuler",
       "confirm": "Confirmer",
       "save": "Enregistrer"
+    },
+    "placeholders": {
+      "name": "Entrez le nom de la compétence",
+      "proficiencyLevel": "Sélectionnez le niveau de compétence",
+      "category": "Sélectionnez la catégorie"
     }
   },
   "comments": {
     "user": "Utilisateur",
     "content": "Contenu",
+    "createdAt": "Créé le",
     "approved": "Approuvé",
     "approvedYes": "Oui",
     "approvedNo": "Non",
@@ -122,6 +149,8 @@
     "subject": "Sujet",
     "content": "Contenu",
     "actions": "Actions",
+    "backToList": "Retour à la liste",
+    "sentAt": "Envoyé le",
     "modal": {
       "createTitle": "Créer un message",
       "deleteTitle": "Supprimer le message",
@@ -161,5 +190,8 @@
     "DEVOPS": "DevOps",
     "TESTING": "Test",
     "OTHER": "Autre"
-  }
+  },
+  "none": "Aucun",
+  "copyright": "© 2025 Charles Séguin's Portfolio. Tous droits réservés.",
+  "current": "Projet actuel !"
 }

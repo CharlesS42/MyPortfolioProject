@@ -1,7 +1,9 @@
 export interface ProjectResponseModel {
     projectId: string;
     title: string;
-    description: string;
+    imageFileName: string;
+    description_EN: string;
+    description_FR: string;
     programmingLanguages: string[];
     date: string;
     repositoryUrl: string;
@@ -10,7 +12,9 @@ export interface ProjectResponseModel {
 
 export interface ProjectRequestModel {
     title: string;
-    description: string;
+    imageFileName: string;
+    description_EN: string;
+    description_FR: string;
     programmingLanguages: string[];
     date: string;
     repositoryUrl: string;

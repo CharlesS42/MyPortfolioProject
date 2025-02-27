@@ -65,7 +65,7 @@ public class DatabaseLoader {
                         .commentId("0ed6c33a-e708-11ef-9d1c-325096b39f47")
                         .userId("94fbe4c0-e705-11ef-a7ad-325096b39f47")
                         .userName("Charles Séguin")
-                        .content("This is a great project!")
+                        .content("Welcome to the comment section! Feel free to leave a comment below with your thoughts on this project.")
                         .createdAt(LocalDateTime.of(2025, 2, 9, 12, 0))
                         .approved(true)
                         .build(),
@@ -74,17 +74,8 @@ public class DatabaseLoader {
                         .commentId("185cd124-e708-11ef-9d03-325096b39f47")
                         .userId("60e7d254-e703-11ef-89be-325096b39f47")
                         .userName("John Doe")
-                        .content("This is a great project!")
+                        .content("This comment is awaiting approval.")
                         .createdAt(LocalDateTime.of(2025, 2, 7, 12, 0))
-                        .approved(false)
-                        .build(),
-                Comment.builder()
-                        .id(null)
-                        .commentId("29541870-e708-11ef-a423-325096b39f47")
-                        .userId("8f54b5f6-e705-11ef-8152-325096b39f47")
-                        .userName("Jane Doe")
-                        .content("This is a great project!")
-                        .createdAt(LocalDateTime.of(2025, 2, 8, 12, 0))
                         .approved(false)
                         .build()
         );
@@ -172,20 +163,54 @@ public class DatabaseLoader {
         List<Project> sampleProjects = List.of(
                 Project.builder()
                         .id(null)
-                        .projectId("0ed6c33a-e708-11ef-9d1c-325096b39f47")
-                        .title("My Portfolio Project")
-                        .description("This is a project description.")
-                        .programmingLanguages(List.of("Java", "Python"))
-                        .date(LocalDate.of(2025, 2, 9))
-                        .repositoryUrl("https://github.com/CharlesS42/MyPortfolioProject")
-                        .liveDemoUrl("https://charlesseg42.github.io/MyPortfolioProject/")
-                        .build(),
-                Project.builder()
-                        .id(null)
                         .projectId("185cd124-e708-11ef-9d03-325096b39f47")
                         .title("Travel Trove")
-                        .description("This is a project description.")
-                        .programmingLanguages(List.of("Java", "Python"))
+                        .imageFileName("TravelTrove")
+                        .description_EN("TravelTrove is a travel agency web application that my team and I have developed in recent months to " +
+                                "allow customers to explore and book various tours for themselves and their families. It is built using Java and " +
+                                "Spring Boot for the backend, with a TypeScript-based frontend, and it leverages MongoDB as " +
+                                "the database. " +
+                                "\n\n" +
+                                "The platform enables customers to browse a wide selection of tours, view detailed itineraries, and make " +
+                                "secure payments for their bookings. Users can manage their reservations and track their booking history " +
+                                "effortlessly. " +
+                                "\n\n" +
+                                "Administrators and employees have access to a comprehensive management panel, allowing them to " +
+                                "modify and control every detail of the available tours. They can monitor customer bookings, analyze " +
+                                "payment statistics, and assess tour popularity through insightful data visualization tools. " +
+                                "\n\n" +
+                                "The application is secured using Auth0-based authentication, ensuring a safe and streamlined access " +
+                                "experience for both customers and administrative users. " +
+                                "\n\n" +
+                                "With its intuitive interface and seamless functionality, TravelTrove enhances the experience of both travelers " +
+                                "and travel agencies by providing a powerful and user-friendly platform for tour management and booking. " +
+                                "The system is designed to be efficient, scalable, and accessible across various devices. " +
+                                "\n\n" +
+                                "By combining a robust backend, a dynamic frontend, and secure authentication, TravelTrove represents " +
+                                "our expertise in building modern, full-stack web applications tailored for the travel industry. ")
+                        .description_FR("TravelTrove est une application web d'agence de voyage que mon équipe et moi avons développée ces derniers mois pour " +
+                                "permettre aux clients d'explorer et de réserver divers circuits pour eux-mêmes et leur famille. Elle est construite en utilisant Java et " +
+                                "Spring Boot pour le backend, avec un frontend basé sur TypeScript, et elle exploite MongoDB comme " +
+                                "base de données. " +
+                                "\n\n" +
+                                "La plateforme permet aux clients de parcourir une large sélection de circuits, de consulter des itinéraires détaillés et de " +
+                                "effectuer des paiements sécurisés pour leurs réservations. Les utilisateurs peuvent gérer leurs réservations et suivre leur historique de réservation " +
+                                "sans effort. " +
+                                "\n\n" +
+                                "Les administrateurs et les employés ont accès à un panneau de gestion complet, leur permettant de " +
+                                "modifier et de contrôler chaque détail des circuits disponibles. Ils peuvent surveiller les réservations des clients, analyser " +
+                                "les statistiques de paiement et évaluer la popularité des circuits grâce à des outils de visualisation de données perspicaces. " +
+                                "\n\n" +
+                                "L'application est sécurisée grâce à l'authentification basée sur Auth0, garantissant un accès sûr et simplifié " +
+                                "pour les clients et les utilisateurs administratifs. " +
+                                "\n\n" +
+                                "Avec son interface intuitive et ses fonctionnalités fluides, TravelTrove améliore l'expérience des voyageurs " +
+                                "et des agences de voyage en fournissant une plateforme puissante et conviviale pour la gestion et la réservation de circuits. " +
+                                "Le système est conçu pour être efficace, évolutif et accessible sur divers appareils. " +
+                                "\n\n" +
+                                "En combinant un backend robuste, un frontend dynamique et une authentification sécurisée, TravelTrove représente " +
+                                "notre expertise dans la construction d'applications web modernes et full-stack adaptées à l'industrie du voyage.")
+                        .programmingLanguages(List.of("Java", "Typescript"))
                         .date(LocalDate.of(2025, 2, 7))
                         .repositoryUrl("https://github.com/Hares-2088/TravelTrove")
                         .liveDemoUrl("https://sea-lion-app-36zpz.ondigitalocean.app/home")
@@ -193,12 +218,96 @@ public class DatabaseLoader {
                 Project.builder()
                         .id(null)
                         .projectId("29541870-e708-11ef-a423-325096b39f47")
-                        .title("My Portfolio Project")
-                        .description("This is a project description.")
-                        .programmingLanguages(List.of("Java", "Python"))
+                        .title("MDExplorer")
+                        .imageFileName("MDExplorer")
+                        .description_EN("MDExplorer is a database exploration and management tool that I develop " +
+                                "in recent months using the Delphi programming language. It allows to " +
+                                "register multiple Interbase or Firebird databases and presents all the " +
+                                "structures elements in a comprehensive tree to browse DDL elements " +
+                                "(tables, fields, triggers, stored procedures, indexes, foreign keys, " +
+                                "primary keys). " +
+                                "\n\n" +
+                                "It also allows to run SQL statements to modify the structure or to query " +
+                                "or manipulate data from the database. It offers a SQL Plan Analyser, a " +
+                                "multi-format BLOB viewer. It supports multiple views in a docking " +
+                                "environment. It features data exportation features. It also offers a " +
+                                "powerful metadata search feature. " +
+                                "\n\n" +
+                                "It is the only known Interbase and Firebase compatible tool that " +
+                                "seamlessly recovers from connection losses resulting of a server restart.")
+                        .description_FR("MDExplorer est un outil d'exploration et de gestion de bases de données " +
+                                        "que j'ai développé au cours des derniers mois en langage Delphi. Il " +
+                                        "permet d'enregistrer plusieurs bases de données Interbase ou Firebird et " +
+                                        "présente tous les éléments structurels sous forme d’arborescence " +
+                                        "complète pour naviguer dans les éléments DDL (tables, champs, " +
+                                        "déclencheurs, procédures stockées, index, clés étrangères, clés " +
+                                        "primaires). Il permet également d'exécuter des requêtes SQL afin de " +
+                                        "modifier la structure, d’interroger ou de manipuler les données de la base. " +
+                                        "\n\n" +
+                                        "Il offre un analyseur de plan SQL, un visualiseur de BLOB multi-format " +
+                                        "et prend en charge plusieurs vues dans un environnement à fenêtres " +
+                                        "ancrables. Il dispose de fonctionnalités d’exportation de données. Il " +
+                                        "offre aussi une fonctionnalité de recherche des métadonnées très puissante. " +
+                                        "\n\n" +
+                                        "C'est le seul outil connu compatible avec Interbase et Firebird capable " +
+                                        "de se résister de façon transparente à une perte de connexion due à un " +
+                                        "redémarrage du serveur.")
+                        .programmingLanguages(List.of("Delphi"))
                         .date(LocalDate.of(2025, 2, 8))
-                        .repositoryUrl("https://github.com/CharlesS42/MovieApp")
-                        .liveDemoUrl("None")
+                        .repositoryUrl("")
+                        .liveDemoUrl("")
+                        .build(),
+                Project.builder()
+                        .id(null)
+                        .projectId("0ed6c33a-e708-11ef-9d1c-325096b39f47")
+                        .title("MyPortfolioProject")
+                        .imageFileName("MyPortfolioProject")
+                        .description_EN("MyPortfolioProject is a personal portfolio application that I have developed in recent months to  " +
+                                        "showcase my programming skills and the projects I have worked on. It is built using Java and  " +
+                                        "Spring Boot for the backend, with a TypeScript-based frontend, and it leverages MongoDB as  " +
+                                        "the database.  "+
+                                        "\n\n" +
+                                        "The platform allows me to present my projects in a structured and visually appealing way,  " +
+                                        "enabling visitors to explore my work through various filters such as programming languages  " +
+                                        "and project timelines. It also features a dynamic comment section, where users can leave  " +
+                                        "feedback, and a contact form for inquiries.  "+
+                                        "\n\n" +
+                                        "The application is secured using Auth0-based authentication, ensuring a seamless and safe  " +
+                                        "login experience. It supports internationalization (i18n) through i18next, allowing users to  " +
+                                        "switch between multiple languages effortlessly.  "+
+                                        "\n\n" +
+                                        "Additionally, MyPortfolioProject enables the storage and retrieval of important documents, such  "
+                                            +  "as my CV, which is hosted securely on AWS S3. The system is designed for a smooth user   " +
+                                        "experience, ensuring accessibility across devices.  "+
+                                        "\n\n" +
+                                        "With a clean and intuitive interface, MyPortfolioProject serves as both a professional showcase  " +
+                                        "and an interactive platform, reflecting my expertise in full-stack development, security, and  " +
+                                        "multilingual applications.")
+                        .description_FR("MyPortfolioProject est une application de portfolio personnel que j'ai développée ces derniers mois pour  " +
+                                        "présenter mes compétences en programmation et les projets sur lesquels j'ai travaillé. Elle est construite en utilisant Java et  " +
+                                        "Spring Boot pour le backend, avec un frontend basé sur TypeScript, et elle exploite MongoDB comme  " +
+                                        "base de données.  "+
+                                        "\n\n" +
+                                        "La plateforme me permet de présenter mes projets de manière structurée et visuellement attrayante,  " +
+                                        "permettant aux visiteurs d'explorer mon travail à travers divers filtres tels que les langages de programmation  " +
+                                        "et les périodes de réalisation des projets. Elle comprend également une section de commentaires dynamique, où les utilisateurs peuvent laisser  " +
+                                        "des avis, ainsi qu'un formulaire de contact pour les demandes d'informations.  "+
+                                        "\n\n" +
+                                        "L'application est sécurisée grâce à l'authentification basée sur Auth0, garantissant une expérience de connexion  " +
+                                        "fluide et sécurisée. Elle prend en charge l'internationalisation (i18n) via i18next, permettant aux utilisateurs de  " +
+                                        "changer de langue facilement.  "+
+                                        "\n\n" +
+                                        "De plus, MyPortfolioProject permet le stockage et la récupération de documents importants, tels  "
+                                        +  "que mon CV, qui est hébergé en toute sécurité sur AWS S3. Le système est conçu pour offrir une expérience utilisateur  " +
+                                        "optimale, assurant une accessibilité sur tous les appareils.  "+
+                                        "\n\n" +
+                                        "Avec une interface propre et intuitive, MyPortfolioProject sert à la fois de vitrine professionnelle  " +
+                                        "et de plateforme interactive, reflétant mon expertise en développement full-stack, sécurité et  " +
+                                        "applications multilingues.")
+                        .programmingLanguages(List.of("Java", "Typescript"))
+                        .date(LocalDate.of(2025, 2, 9))
+                        .repositoryUrl("https://github.com/CharlesS42/MyPortfolioProject")
+                        .liveDemoUrl("here")
                         .build()
         );
 
@@ -223,28 +332,9 @@ public class DatabaseLoader {
                         .firstName("Charles")
                         .lastName("Seguin")
                         .email("charles.seg42@gmail.com")
-                        .subject("Greetings")
-                        .message("Hello, we are interested in hiring you!")
-                        .sentAt(LocalDateTime.of(2025, 2, 9, 12, 0))
-                        .build(),
-                ContactMessage.builder()
-                        .id(null)
-                        .contactMessageId("0ed6c33a-e708-11ef-9d1c-325096b39f47")
-                        .firstName("John")
-                        .lastName("Doe")
-                        .email("john.doe@example.com")
-                        .subject("Greetings")
-                        .message("Hello, we are interested in hiring you!")
-                        .sentAt(LocalDateTime.of(2025, 2, 9, 12, 0))
-                        .build(),
-                ContactMessage.builder()
-                        .id(null)
-                        .contactMessageId("185cd124-e708-11ef-9d03-325096b39f47")
-                        .firstName("Jane")
-                        .lastName("Doe")
-                        .email("jane.doe@example.com")
-                        .subject("Greetings")
-                        .message("Hello, we are interested in hiring you!")
+                        .subject("Welcome to the message section!")
+                        .message("This section is meant to be a placeholder for messages from visitors. When the contact me page is called, " +
+                                "the form data will be sent here and saved in the database. This is a test message.")
                         .sentAt(LocalDateTime.of(2025, 2, 9, 12, 0))
                         .build()
         );
