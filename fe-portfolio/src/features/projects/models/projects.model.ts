@@ -8,6 +8,7 @@ export interface ProjectResponseModel {
     date: string;
     repositoryUrl: string;
     liveDemoUrl: string;
+    skills: string[];
 }
 
 export interface ProjectRequestModel {
@@ -19,4 +20,5 @@ export interface ProjectRequestModel {
     date: string;
     repositoryUrl: string;
     liveDemoUrl: string;
+    skills: string[];
 }

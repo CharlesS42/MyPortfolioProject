@@ -20,7 +20,8 @@ const ProjectsTab: React.FC = () => {
     programmingLanguages: [],
     date: "",
     repositoryUrl: "",
-    liveDemoUrl: ""
+    liveDemoUrl: "",
+    skills: []
   });
   const [viewingProject, setViewingProject] = useState<ProjectResponseModel | null>(null);
 
@@ -89,6 +90,14 @@ const ProjectsTab: React.FC = () => {
     }));
   };
 
+  const handleSkillsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      skills: value.split(",").map((skill) => skill.trim()),
+    }));
+  };
+
   return (
     <div>
       {viewingProject ? (
@@ -117,6 +126,7 @@ const ProjectsTab: React.FC = () => {
             t("none")
           )}
           </p>
+          <p><strong>{t("projects.skills")}:</strong> {(viewingProject.skills || []).join(", ")}</p>
         </div>
       ) : (
         <>
@@ -126,7 +136,7 @@ const ProjectsTab: React.FC = () => {
               variant="primary"
               onClick={() => {
                 setModalType("create");
-                setFormData({ title: "", imageFileName: "", description_EN: "", description_FR: "", programmingLanguages: [], date: "", repositoryUrl: "", liveDemoUrl: "" });
+                setFormData({ title: "", imageFileName: "", description_EN: "", description_FR: "", programmingLanguages: [], date: "", repositoryUrl: "", liveDemoUrl: "", skills: [] });
                 setShowModal(true);
               }}
             >
@@ -163,7 +173,8 @@ const ProjectsTab: React.FC = () => {
                             programmingLanguages: project.programmingLanguages,
                             date: project.date,
                             repositoryUrl: project.repositoryUrl,
-                            liveDemoUrl: project.liveDemoUrl
+                            liveDemoUrl: project.liveDemoUrl,
+                            skills: project.skills
                           });
                           setShowModal(true);
                         }}
@@ -265,6 +276,16 @@ const ProjectsTab: React.FC = () => {
                   value={formData.liveDemoUrl}
                   onChange={handleInputChange}
                   placeholder={t("projects.placeholders.liveDemoUrl")}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>{t("projects.skills")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="skills"
+                  value={formData.skills.join(", ")}
+                  onChange={handleSkillsChange}
+                  placeholder={t("projects.placeholders.skills")}
                 />
               </Form.Group>
             </Form>

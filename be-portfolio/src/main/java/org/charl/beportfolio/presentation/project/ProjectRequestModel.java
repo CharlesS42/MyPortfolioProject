@@ -21,4 +21,5 @@ public class ProjectRequestModel {
     private LocalDate date;
     private String repositoryUrl;
     private String liveDemoUrl;
+    private List<String> skills;
 }

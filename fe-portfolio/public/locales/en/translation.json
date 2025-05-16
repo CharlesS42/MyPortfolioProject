@@ -28,7 +28,9 @@
       "repository": "Repository",
       "liveDemo": "Live Demo",
       "description_EN": "Description (English)",
-      "description_FR": "Description (French)"
+      "description_FR": "Description (French)",
+      "skills": "Skills",
+      "date": "Date"
     },
     "skills": {
       "title": "Skills",
@@ -63,6 +65,7 @@
     "description_EN": "Description (English)",
     "description_FR": "Description (French)",
     "date": "Date",
+    "skills": "Skills",
     "backToList": "Back to List",
     "modal": {
       "createTitle": "Create Project",

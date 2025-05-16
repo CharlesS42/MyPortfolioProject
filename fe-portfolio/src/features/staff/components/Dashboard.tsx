@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="d-flex justify-content-center align-items-center p-3" style={{ backgroundColor: "#AFCBD5", minHeight: "100vh" }}>
+    <div className="d-flex justify-content-center align-items-center p-3" style={{ minHeight: "100vh" }}>
       <Card className="rounded shadow border-0 w-100 h-auto" style={{ maxWidth: "1200px", minHeight: "80vh" }}>
         <Card.Body className="p-0 d-flex flex-column">
           <Tab.Container activeKey={activeTab}>

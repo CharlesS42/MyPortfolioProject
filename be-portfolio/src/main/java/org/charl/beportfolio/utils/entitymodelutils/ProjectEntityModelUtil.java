@@ -39,6 +39,9 @@ public class ProjectEntityModelUtil {
         if (project.getLiveDemoUrl() != null) {
             projectResponseModel.setLiveDemoUrl(project.getLiveDemoUrl());
         }
+        if (project.getSkills() != null) {
+            projectResponseModel.setSkills(project.getSkills());
+        }
 
         return projectResponseModel;
     }
@@ -55,6 +58,7 @@ public class ProjectEntityModelUtil {
                 .date(projectRequestModel.getDate())
                 .repositoryUrl(projectRequestModel.getRepositoryUrl())
                 .liveDemoUrl(projectRequestModel.getLiveDemoUrl())
+                .skills(projectRequestModel.getSkills())
                 .build();
     }
 

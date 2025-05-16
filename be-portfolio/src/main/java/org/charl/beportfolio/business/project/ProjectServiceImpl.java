@@ -51,6 +51,7 @@ public class ProjectServiceImpl implements ProjectService {
                     foundProject.setDate(projectRequestModel.getDate());
                     foundProject.setRepositoryUrl(projectRequestModel.getRepositoryUrl());
                     foundProject.setLiveDemoUrl(projectRequestModel.getLiveDemoUrl());
+                    foundProject.setSkills(projectRequestModel.getSkills());
                     return projectRepository.save(foundProject);
                 })
                 .map(ProjectEntityModelUtil::toProjectResponseModel);

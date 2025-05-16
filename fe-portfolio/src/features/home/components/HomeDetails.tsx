@@ -89,10 +89,10 @@ const HomeDetails: React.FC = () => {
           <img src="/assets/my_profile.jpg" alt={t("home.profileAlt", { name: "Charles Séguin" })} className="profile-picture img-fluid rounded" />
         </div>
         <div className="col-md-8">
-          <h1>{t("home.name")}</h1>
-          <h3>{t("home.title")}</h3>
-          <p>{t("home.introduction")}</p>
-          <a 
+          <h1 style={{ color: "#FFFFFF" }}>{t("home.name")}</h1>
+          <h3 style={{ color: "#FFFFFF" }}>{t("home.title")}</h3>
+          <p style={{ color: "#FFFFFF" }}>{t("home.introduction")}</p>
+          <a
             href={i18n.language === "fr" ? "/Charles_Seguin_CV_francais.pdf" : "/Charles_Seguin_Resume_english.pdf"}
             download
             className="btn btn-primary mt-3"
@@ -119,9 +119,10 @@ const HomeDetails: React.FC = () => {
                 <div className="card-body">
                   <h5 className="card-title">{project.title}</h5>
                   <p className="card-text pre-wrap">{localStorage.getItem("language") === "fr" ? project.description_FR : project.description_EN}</p>
-                  <p><strong>{t("home.projects.technologies")}:</strong> {project.programmingLanguages.join(", ")}</p>
-                  <p><small>{new Date(project.date).toLocaleDateString()}</small></p>
-                  
+                  <p><strong>{t("home.projects.technologies")}:</strong> {(project.programmingLanguages || []).join(", ")}</p>
+                  <p><strong>{t("home.projects.skills")}:</strong> {(project.skills || []).join(", ")}</p>
+                  <p><strong>{t("home.projects.date")}:</strong> {new Date(project.date).toLocaleDateString()}</p>
+
                   {project.repositoryUrl && (
                     <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
                       {t("home.projects.repository")}

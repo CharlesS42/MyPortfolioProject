@@ -1,0 +1,67 @@
+/* dashboard layout */
+.dashboard-wrapper {
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* card container */
+.dashboard-card {
+  border-radius: 1rem;
+  background-color: rgba(40, 44, 52, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* sidebar style */
+.dashboard-sidebar {
+  background-color: #1e1e2f;
+  color: #ffffff;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.dashboard-sidebar h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-sidebar .nav-link {
+  color: #b0b3c2;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dashboard-sidebar .nav-link:hover {
+  background-color: #3a3a5e;
+  color: #ffffff;
+}
+
+.dashboard-sidebar .nav-link.active,
+.dashboard-sidebar .nav-link.bg-secondary {
+  background-color: #5865f2 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+/* main content */
+.dashboard-content {
+  background-color: #ffffff;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* dropdown (mobile) */
+.dashboard-dropdown .dropdown-toggle {
+  background-color: #1e1e2f;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+.dashboard-dropdown .dropdown-menu {
+  width: 100%;
+  border-radius: 0.5rem;
+}

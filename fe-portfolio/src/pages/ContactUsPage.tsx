@@ -47,7 +47,7 @@ const ContactUsPage: React.FC = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#AFCBD5", minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh" }}>
       <Container className="d-flex justify-content-center align-items-center min-vh-100">
         <Card className="w-100 shadow-lg p-4" style={{ maxWidth: "500px", borderRadius: "12px" }}>
           <h2 className="text-center mb-4">{t("contact.title")}</h2>

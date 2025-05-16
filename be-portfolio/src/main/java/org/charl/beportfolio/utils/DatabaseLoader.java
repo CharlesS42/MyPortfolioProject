@@ -166,148 +166,66 @@ public class DatabaseLoader {
                         .projectId("185cd124-e708-11ef-9d03-325096b39f47")
                         .title("Travel Trove")
                         .imageFileName("TravelTrove")
-                        .description_EN("TravelTrove is a travel agency web application that my team and I have developed in recent months to " +
-                                "allow customers to explore and book various tours for themselves and their families. It is built using Java and " +
-                                "Spring Boot for the backend, with a TypeScript-based frontend, and it leverages MongoDB as " +
-                                "the database. " +
-                                "\n\n" +
-                                "The platform enables customers to browse a wide selection of tours, view detailed itineraries, and make " +
-                                "secure payments for their bookings. Users can manage their reservations and track their booking history " +
-                                "effortlessly. " +
-                                "\n\n" +
-                                "Administrators and employees have access to a comprehensive management panel, allowing them to " +
-                                "modify and control every detail of the available tours. They can monitor customer bookings, analyze " +
-                                "payment statistics, and assess tour popularity through insightful data visualization tools. " +
-                                "\n\n" +
-                                "The application is secured using Auth0-based authentication, ensuring a safe and streamlined access " +
-                                "experience for both customers and administrative users. " +
-                                "\n\n" +
-                                "With its intuitive interface and seamless functionality, TravelTrove enhances the experience of both travelers " +
-                                "and travel agencies by providing a powerful and user-friendly platform for tour management and booking. " +
-                                "The system is designed to be efficient, scalable, and accessible across various devices. " +
-                                "\n\n" +
-                                "By combining a robust backend, a dynamic frontend, and secure authentication, TravelTrove represents " +
-                                "our expertise in building modern, full-stack web applications tailored for the travel industry. ")
-                        .description_FR("TravelTrove est une application web d'agence de voyage que mon équipe et moi avons développée ces derniers mois pour " +
-                                "permettre aux clients d'explorer et de réserver divers circuits pour eux-mêmes et leur famille. Elle est construite en utilisant Java et " +
-                                "Spring Boot pour le backend, avec un frontend basé sur TypeScript, et elle exploite MongoDB comme " +
-                                "base de données. " +
-                                "\n\n" +
-                                "La plateforme permet aux clients de parcourir une large sélection de circuits, de consulter des itinéraires détaillés et de " +
-                                "effectuer des paiements sécurisés pour leurs réservations. Les utilisateurs peuvent gérer leurs réservations et suivre leur historique de réservation " +
-                                "sans effort. " +
-                                "\n\n" +
-                                "Les administrateurs et les employés ont accès à un panneau de gestion complet, leur permettant de " +
-                                "modifier et de contrôler chaque détail des circuits disponibles. Ils peuvent surveiller les réservations des clients, analyser " +
-                                "les statistiques de paiement et évaluer la popularité des circuits grâce à des outils de visualisation de données perspicaces. " +
-                                "\n\n" +
-                                "L'application est sécurisée grâce à l'authentification basée sur Auth0, garantissant un accès sûr et simplifié " +
-                                "pour les clients et les utilisateurs administratifs. " +
-                                "\n\n" +
-                                "Avec son interface intuitive et ses fonctionnalités fluides, TravelTrove améliore l'expérience des voyageurs " +
-                                "et des agences de voyage en fournissant une plateforme puissante et conviviale pour la gestion et la réservation de circuits. " +
-                                "Le système est conçu pour être efficace, évolutif et accessible sur divers appareils. " +
-                                "\n\n" +
-                                "En combinant un backend robuste, un frontend dynamique et une authentification sécurisée, TravelTrove représente " +
-                                "notre expertise dans la construction d'applications web modernes et full-stack adaptées à l'industrie du voyage.")
+                        .description_EN("TravelTrove is a full-stack travel agency web application developed by my team and me, " +
+                                        "using Java and Spring Boot for the backend, TypeScript for the frontend, and MongoDB for data storage. " +
+                                        "It enables customers to browse tours, view itineraries, make secure bookings, and manage their reservations. " +
+                                        "Administrators and employees have access to a management panel to oversee tours, analyze statistics, and monitor bookings. " +
+                                        "With Auth0-based authentication and a responsive design, TravelTrove delivers a secure, scalable, " +
+                                        "and user-friendly platform tailored to the travel industry.")
+                        .description_FR("TravelTrove est une application web full-stack d’agence de voyage que mon équipe et moi avons développée en utilisant " +
+                                        "Java et Spring Boot pour le backend, TypeScript pour le frontend, et MongoDB pour la base de données. " +
+                                        "Elle permet aux clients de parcourir des circuits, consulter des itinéraires, effectuer des réservations sécurisées et gérer leurs historiques. " +
+                                        "Les administrateurs disposent d’un panneau de gestion pour suivre les réservations, analyser les statistiques et gérer les circuits. " +
+                                        "Grâce à l’authentification Auth0 et une conception responsive, TravelTrove offre une plateforme sécurisée, évolutive et conviviale adaptée au secteur du voyage.")
                         .programmingLanguages(List.of("Java", "Typescript"))
                         .date(LocalDate.of(2025, 2, 7))
                         .repositoryUrl("https://github.com/Hares-2088/TravelTrove")
                         .liveDemoUrl("https://sea-lion-app-36zpz.ondigitalocean.app/home")
+                        .skills(List.of("GitHub", "Authentication", "MongoDB", "Spring Boot", "Java", "Typescript", "Deployment"))
                         .build(),
                 Project.builder()
                         .id(null)
                         .projectId("29541870-e708-11ef-a423-325096b39f47")
                         .title("MDExplorer")
                         .imageFileName("MDExplorer")
-                        .description_EN("MDExplorer is a database exploration and management tool that I develop " +
-                                "in recent months using the Delphi programming language. It allows to " +
-                                "register multiple Interbase or Firebird databases and presents all the " +
-                                "structures elements in a comprehensive tree to browse DDL elements " +
-                                "(tables, fields, triggers, stored procedures, indexes, foreign keys, " +
-                                "primary keys). " +
-                                "\n\n" +
-                                "It also allows to run SQL statements to modify the structure or to query " +
-                                "or manipulate data from the database. It offers a SQL Plan Analyser, a " +
-                                "multi-format BLOB viewer. It supports multiple views in a docking " +
-                                "environment. It features data exportation features. It also offers a " +
-                                "powerful metadata search feature. " +
-                                "\n\n" +
-                                "It is the only known Interbase and Firebase compatible tool that " +
-                                "seamlessly recovers from connection losses resulting of a server restart.")
-                        .description_FR("MDExplorer est un outil d'exploration et de gestion de bases de données " +
-                                        "que j'ai développé au cours des derniers mois en langage Delphi. Il " +
-                                        "permet d'enregistrer plusieurs bases de données Interbase ou Firebird et " +
-                                        "présente tous les éléments structurels sous forme d’arborescence " +
-                                        "complète pour naviguer dans les éléments DDL (tables, champs, " +
-                                        "déclencheurs, procédures stockées, index, clés étrangères, clés " +
-                                        "primaires). Il permet également d'exécuter des requêtes SQL afin de " +
-                                        "modifier la structure, d’interroger ou de manipuler les données de la base. " +
-                                        "\n\n" +
-                                        "Il offre un analyseur de plan SQL, un visualiseur de BLOB multi-format " +
-                                        "et prend en charge plusieurs vues dans un environnement à fenêtres " +
-                                        "ancrables. Il dispose de fonctionnalités d’exportation de données. Il " +
-                                        "offre aussi une fonctionnalité de recherche des métadonnées très puissante. " +
-                                        "\n\n" +
-                                        "C'est le seul outil connu compatible avec Interbase et Firebird capable " +
-                                        "de se résister de façon transparente à une perte de connexion due à un " +
-                                        "redémarrage du serveur.")
+                        .description_EN("MDExplorer is a Delphi-based tool I developed for exploring and managing Interbase and Firebird databases. " +
+                                        "It supports registering multiple databases, displaying structural elements (tables, fields, triggers, procedures, keys, etc.) " +
+                                        "in a navigable tree. Users can execute SQL statements, analyze query plans, view BLOBs in multiple formats, and work within a multi-view docking environment. " +
+                                        "It includes features like metadata search and data export, and uniquely offers seamless recovery from connection losses after server restarts—making it a robust " +
+                                        "and versatile solution for database administrators.")
+                        .description_FR("MDExplorer est un outil développé en Delphi pour l’exploration et la gestion de bases de données Interbase et Firebird. " +
+                                        "Il permet d’enregistrer plusieurs bases, d’afficher les éléments structurels (tables, champs, déclencheurs, procédures, clés, etc.) " +
+                                        "dans un arbre de navigation clair. Les utilisateurs peuvent exécuter des requêtes SQL, analyser les plans d’exécution, " +
+                                        "visualiser les BLOBs sous plusieurs formats et travailler dans un environnement à vues multiples avec ancrage. " +
+                                        "Il offre des fonctions de recherche de métadonnées, d’exportation de données, et se distingue par sa capacité unique " +
+                                        "à se reconnecter automatiquement après une perte de connexion due au redémarrage du serveur.")
                         .programmingLanguages(List.of("Delphi"))
                         .date(LocalDate.of(2025, 2, 8))
                         .repositoryUrl("")
                         .liveDemoUrl("")
+                        .skills(List.of("GitHub", "Delphi", "Interbase", "Firebird", "SQL", "Database Management"))
                         .build(),
                 Project.builder()
                         .id(null)
                         .projectId("0ed6c33a-e708-11ef-9d1c-325096b39f47")
                         .title("MyPortfolioProject")
                         .imageFileName("MyPortfolioProject")
-                        .description_EN("MyPortfolioProject is a personal portfolio application that I have developed in recent months to  " +
-                                        "showcase my programming skills and the projects I have worked on. It is built using Java and  " +
-                                        "Spring Boot for the backend, with a TypeScript-based frontend, and it leverages MongoDB as  " +
-                                        "the database.  "+
-                                        "\n\n" +
-                                        "The platform allows me to present my projects in a structured and visually appealing way,  " +
-                                        "enabling visitors to explore my work through various filters such as programming languages  " +
-                                        "and project timelines. It also features a dynamic comment section, where users can leave  " +
-                                        "feedback, and a contact form for inquiries.  "+
-                                        "\n\n" +
-                                        "The application is secured using Auth0-based authentication, ensuring a seamless and safe  " +
-                                        "login experience. It supports internationalization (i18n) through i18next, allowing users to  " +
-                                        "switch between multiple languages effortlessly.  "+
-                                        "\n\n" +
-                                        "Additionally, MyPortfolioProject enables the storage and retrieval of important documents, such  "
-                                            +  "as my CV, which is hosted securely on AWS S3. The system is designed for a smooth user   " +
-                                        "experience, ensuring accessibility across devices.  "+
-                                        "\n\n" +
-                                        "With a clean and intuitive interface, MyPortfolioProject serves as both a professional showcase  " +
-                                        "and an interactive platform, reflecting my expertise in full-stack development, security, and  " +
-                                        "multilingual applications.")
-                        .description_FR("MyPortfolioProject est une application de portfolio personnel que j'ai développée ces derniers mois pour  " +
-                                        "présenter mes compétences en programmation et les projets sur lesquels j'ai travaillé. Elle est construite en utilisant Java et  " +
-                                        "Spring Boot pour le backend, avec un frontend basé sur TypeScript, et elle exploite MongoDB comme  " +
-                                        "base de données.  "+
-                                        "\n\n" +
-                                        "La plateforme me permet de présenter mes projets de manière structurée et visuellement attrayante,  " +
-                                        "permettant aux visiteurs d'explorer mon travail à travers divers filtres tels que les langages de programmation  " +
-                                        "et les périodes de réalisation des projets. Elle comprend également une section de commentaires dynamique, où les utilisateurs peuvent laisser  " +
-                                        "des avis, ainsi qu'un formulaire de contact pour les demandes d'informations.  "+
-                                        "\n\n" +
-                                        "L'application est sécurisée grâce à l'authentification basée sur Auth0, garantissant une expérience de connexion  " +
-                                        "fluide et sécurisée. Elle prend en charge l'internationalisation (i18n) via i18next, permettant aux utilisateurs de  " +
-                                        "changer de langue facilement.  "+
-                                        "\n\n" +
-                                        "De plus, MyPortfolioProject permet le stockage et la récupération de documents importants, tels  "
-                                        +  "que mon CV, qui est hébergé en toute sécurité sur AWS S3. Le système est conçu pour offrir une expérience utilisateur  " +
-                                        "optimale, assurant une accessibilité sur tous les appareils.  "+
-                                        "\n\n" +
-                                        "Avec une interface propre et intuitive, MyPortfolioProject sert à la fois de vitrine professionnelle  " +
-                                        "et de plateforme interactive, reflétant mon expertise en développement full-stack, sécurité et  " +
-                                        "applications multilingues.")
+                        .description_EN("MyPortfolioProject is a personal portfolio web application I developed to showcase my programming skills and past projects. " +
+                                        "Built with Java and Spring Boot for the backend, a TypeScript frontend, and MongoDB for data storage, it features project filtering, " +
+                                        "a dynamic comment section, and a contact form. The platform uses Auth0 for secure authentication, supports internationalization with i18next, " +
+                                        "and allows users to access documents like my CV, securely stored on AWS S3. With a responsive, user-friendly design, " +
+                                        "it highlights my full-stack development skills, focus on security, and ability to build multilingual applications.")
+                        .description_FR("MyPortfolioProject est une application web de portfolio personnel que j’ai développée pour présenter mes compétences " +
+                                        "en programmation et les projets sur lesquels j’ai travaillé. Conçue avec Java et Spring Boot pour le backend, un frontend en TypeScript, " +
+                                        "et MongoDB comme base de données, elle propose des filtres de recherche de projets, une section de commentaires dynamique, " +
+                                        "et un formulaire de contact. L’authentification sécurisée est assurée par Auth0, la prise en charge multilingue est assurée par i18next, " +
+                                        "et mon CV est hébergé en toute sécurité sur AWS S3. Grâce à une interface réactive et intuitive, cette plateforme reflète mon expertise " +
+                                        "en développement full-stack, sécurité et applications multilingues.")
                         .programmingLanguages(List.of("Java", "Typescript"))
                         .date(LocalDate.of(2025, 2, 9))
                         .repositoryUrl("https://github.com/CharlesS42/MyPortfolioProject")
                         .liveDemoUrl("here")
+                        .skills(List.of("GitHub", "Authentication", "MongoDB", "Spring Boot", "Java", "Typescript", "Deployment", "AWS S3"))
                         .build()
         );
 

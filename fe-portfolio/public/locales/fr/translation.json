@@ -28,7 +28,9 @@
       "repository": "Dépôt",
       "liveDemo": "Démo en direct",
       "description_EN": "Description (anglais)",
-      "description_FR": "Description (français)"
+      "description_FR": "Description (français)",
+      "skills": "Compétences",
+      "date": "Date"
     },
     "skills": {
       "title": "Compétences",
@@ -63,6 +65,7 @@
     "description_EN": "Description (anglais)",
     "description_FR": "Description (français)",
     "date": "Date",
+    "skills": "Compétences",
     "backToList": "Retour à la liste",
     "modal": {
       "createTitle": "Créer un projet",
